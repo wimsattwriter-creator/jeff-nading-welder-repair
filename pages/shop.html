@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quality parts and supplies for Miller Bobcat and engine-driven welder/generator repair. Hand-picked by a professional technician.">
+    <title>Shop — Jeff Nading Welder Repair</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="../index.html" class="nav__logo">
+            <div class="nav__logo-icon">JN</div>
+            Jeff Nading <span>Welder Repair</span>
+        </a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="what-we-fix.html">What We Fix</a></li>
+            <li><a href="assessment.html">Repair Assessment</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="gallery.html">Before &amp; After</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">&#128722;<span class="cart-icon__count" id="cartCount" style="display:none;">0</span></div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="section section--blue" style="padding:3rem 0;">
+    <div class="container">
+        <div class="section-header section-header--light">
+            <h1>Parts &amp; Supplies</h1>
+            <p>Quality parts hand-picked by a technician who knows what works. Every item here is something we use or recommend in our own shop.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Shop Filters -->
+<section class="section" style="padding-bottom:0;">
+    <div class="container">
+        <div class="gallery-filters" id="shopFilters">
+            <button class="gallery-filter-btn active" onclick="filterShop('all')">All Items</button>
+            <button class="gallery-filter-btn" onclick="filterShop('engine')">Engine Parts</button>
+            <button class="gallery-filter-btn" onclick="filterShop('electrical')">Electrical</button>
+            <button class="gallery-filter-btn" onclick="filterShop('fuel')">Fuel System</button>
+            <button class="gallery-filter-btn" onclick="filterShop('maintenance')">Maintenance</button>
+            <button class="gallery-filter-btn" onclick="filterShop('body')">Body &amp; Hardware</button>
+        </div>
+    </div>
+</section>
+
+<!-- Product Grid -->
+<section class="section">
+    <div class="container">
+        <div class="product-grid" id="productGrid">
+            <!-- Products populated by JavaScript -->
+        </div>
+        <div class="text-center mt-4" id="noProducts" style="display:none;">
+            <p class="text-muted">No products in this category yet. Check back soon or contact Jeff for specific parts.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Info Section -->
+<section class="section section--dark">
+    <div class="container">
+        <div class="grid grid--3">
+            <div class="text-center">
+                <div style="font-size:2.5rem;margin-bottom:1rem;">&#9989;</div>
+                <h3 style="color:var(--white);">Technician Selected</h3>
+                <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;">Every part is one we've used in our own repairs. No generic substitutes.</p>
+            </div>
+            <div class="text-center">
+                <div style="font-size:2.5rem;margin-bottom:1rem;">&#128666;</div>
+                <h3 style="color:var(--white);">Ships Direct</h3>
+                <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;">Parts ship directly to you. Need it installed? Ask about our repair services.</p>
+            </div>
+            <div class="text-center">
+                <div style="font-size:2.5rem;margin-bottom:1rem;">&#128172;</div>
+                <h3 style="color:var(--white);">Expert Support</h3>
+                <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;">Not sure which part you need? Use the assessment tool or call Jeff directly.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <h4>Jeff Nading Welder Repair</h4>
+                <p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="what-we-fix.html">What We Fix</a></li>
+                    <li><a href="assessment.html">Repair Assessment</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gallery.html">Before &amp; After</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Information</h4>
+                <ul><li><a href="about.html">About Jeff</a></li><li><a href="contact.html">Contact</a></li></ul>
+            </div>
+        </div>
+        <div class="footer__bottom">&copy; 2026 Jeff Nading Welder Repair. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- Don't Panic -->
+<div class="dont-panic"><button class="dont-panic__btn" onclick="togglePanicPanel()"><span class="icon">&#128172;</span> Don't Panic</button></div>
+<div class="dont-panic__panel" id="panicPanel">
+    <div class="dont-panic__panel-header"><h3>We've Seen It All — We Can Help</h3><button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button></div>
+    <div class="dont-panic__panel-body">
+        <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+        <div class="contact-line"><span class="icon">&#128222;</span><span>Call or Text: <strong>(555) 123-4567</strong></span></div>
+        <div class="contact-line"><span class="icon">&#9993;</span><span>Email: <strong>jeff@welderrepair.com</strong></span></div>
+        <div class="dont-panic__assessment-note" id="panicAssessmentNote">
+            <strong>Save time for both of us:</strong> Complete our free <a href="assessment.html">Repair Assessment</a> first.
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header"><h3>Your Cart</h3><button class="cart-sidebar__close" onclick="toggleCart()">&times;</button></div>
+    <div class="cart-sidebar__items" id="cartItems"></div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;">
+        <div class="cart-sidebar__total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+        <button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/shop.js"></script>
+</body>
+</html>

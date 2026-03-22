@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="See the full range of welder and generator repairs we perform — engine rebuilds, stator rewinding, transformer cores, circuit boards, and complete restorations.">
+    <title>What We Fix — Jeff Nading Welder Repair</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="../index.html" class="nav__logo">
+            <div class="nav__logo-icon">JN</div>
+            Jeff Nading <span>Welder Repair</span>
+        </a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="what-we-fix.html" class="active">What We Fix</a></li>
+            <li><a href="assessment.html">Repair Assessment</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="gallery.html">Before &amp; After</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">
+                &#128722;
+                <span class="cart-icon__count" id="cartCount" style="display:none;">0</span>
+            </div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="section section--blue">
+    <div class="container">
+        <div class="section-header section-header--light">
+            <h1>What We Fix</h1>
+            <p>From routine maintenance to full restorations — real photos from our shop showing exactly what's involved in each type of repair.</p>
+        </div>
+        <div class="gallery-filters">
+            <button class="gallery-filter-btn active" data-category="all" onclick="filterGallery('all')">All Categories</button>
+            <button class="gallery-filter-btn" data-category="engine" onclick="filterGallery('engine')">Engine</button>
+            <button class="gallery-filter-btn" data-category="stator" onclick="filterGallery('stator')">Stator / Generator</button>
+            <button class="gallery-filter-btn" data-category="transformer" onclick="filterGallery('transformer')">Transformer</button>
+            <button class="gallery-filter-btn" data-category="electronics" onclick="filterGallery('electronics')">Electronics</button>
+            <button class="gallery-filter-btn" data-category="wiring" onclick="filterGallery('wiring')">Wiring</button>
+            <button class="gallery-filter-btn" data-category="fuel" onclick="filterGallery('fuel')">Fuel System</button>
+            <button class="gallery-filter-btn" data-category="body" onclick="filterGallery('body')">Body &amp; Frame</button>
+            <button class="gallery-filter-btn" data-category="diagnostic" onclick="filterGallery('diagnostic')">Diagnostics</button>
+        </div>
+    </div>
+</section>
+
+<!-- Repair Categories with Photos -->
+<section class="section">
+    <div class="container">
+
+        <!-- ENGINE MECHANICAL -->
+        <div id="engine-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Engine Mechanical</h2>
+                    <p class="text-muted">Kohler engine rebuilds — pistons, cylinders, valves, timing, crankshaft</p>
+                </div>
+                <span class="tier-badge tier-badge--4">Tier 3-5 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'Cylinder bore with scoring damage — requires reboring or sleeve replacement')">
+                    <img src="../images/engine/cylinder-bore-scoring.jpeg" alt="Cylinder bore with scoring damage" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Cylinder Bore Scoring</h4>
+                        <p>Indicates engine rebuild needed</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'Complete Kohler engine teardown on workbench — every component inspected')">
+                    <img src="../images/engine/kohler-teardown-bench.jpeg" alt="Kohler engine completely disassembled on workbench" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Complete Teardown</h4>
+                        <p>Every part inspected</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'Cylinder heads with new valves — intake and exhaust valve job complete')">
+                    <img src="../images/engine/cylinder-heads-valves-labeled.jpeg" alt="Cylinder heads with valves, labeled for reassembly" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Valve Job</h4>
+                        <p>Precision seating required</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'Crankshaft with counterweights and timing gears — the backbone of the engine')">
+                    <img src="../images/engine/crankshaft-counterweights.jpeg" alt="Crankshaft with counterweights and timing gears" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Crankshaft</h4>
+                        <p>Engine backbone</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'V-twin engine block fully rebuilt — clean, measured, ready for service')">
+                    <img src="../images/engine/vtwin-block-fully-rebuilt.jpeg" alt="V-twin engine block fully rebuilt and clean" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Rebuilt Engine Block</h4>
+                        <p>Ready for reassembly</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engine" onclick="openLightbox(this.querySelector('img').src, 'Engine on chain hoist being removed from welder frame for major repair')">
+                    <img src="../images/engine/engine-on-chain-hoist.jpeg" alt="Engine suspended on chain hoist during removal" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Engine Removal</h4>
+                        <p>Major repair requires full pull</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:1.5rem;margin-top:1.5rem;">
+                <h4>What's Involved</h4>
+                <p>Engine work requires removing the power plant from the welder frame, complete disassembly, measurement of all wear surfaces, and precision reassembly. Kohler V-twin engines used in Miller Bobcats demand exact valve clearances, timing alignment, and torque specifications. A single missed step means the engine fails again.</p>
+                <p><strong>Common reasons for engine failure:</strong> Low oil/neglected maintenance, overheating, worn rings and valve seals, seized bearings, broken timing components.</p>
+            </div>
+        </div>
+
+        <!-- STATOR / GENERATOR -->
+        <div id="stator-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Stator &amp; Generator Components</h2>
+                    <p class="text-muted">Stator rewinding, rotor work, flywheel and charging system repairs</p>
+                </div>
+                <span class="tier-badge tier-badge--5">Tier 4-5 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Bare stator lamination stack with numbered winding slots — ready for hand rewinding')">
+                    <img src="../images/stator/bare-lamination-numbered-slots.jpeg" alt="Bare stator lamination stack with numbered slots" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Bare Lamination Stack</h4>
+                        <p>Numbered for precision rewinding</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Stator being hand-rewound with copper wire through each slot')">
+                    <img src="../images/stator/stator-being-rewound.jpeg" alt="Stator being hand-wound with copper wire" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Hand Rewinding</h4>
+                        <p>Copper wire through every slot</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Completed stator rewind — all windings in place, ready for testing')">
+                    <img src="../images/stator/completed-rewind-top-view.jpeg" alt="Completed stator rewind viewed from above" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Completed Rewind</h4>
+                        <p>Every winding in place</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Flywheel with charging coils — the charging system that keeps the battery alive')">
+                    <img src="../images/stator/flywheel-charging-coils.jpeg" alt="Flywheel with stator charging coils" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Flywheel Charging System</h4>
+                        <p>Powers the entire electrical system</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Slip rings and commutator on rotor shaft — critical contact surfaces')">
+                    <img src="../images/stator/slip-rings-commutator.jpeg" alt="Slip rings and commutator on rotor shaft" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Slip Rings</h4>
+                        <p>Critical contact surfaces</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Four flywheels on workbench — inventory for various Miller models')">
+                    <img src="../images/stator/four-flywheels-inventory.jpeg" alt="Four flywheels on workbench" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Flywheel Inventory</h4>
+                        <p>Parts for multiple models</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:1.5rem;margin-top:1.5rem;">
+                <h4>What's Involved</h4>
+                <p>The stator is the heart of your welder's power generation. When it fails, you get no welding output and no auxiliary power. Rewinding a stator means removing every coil of copper wire from the lamination stack, insulating each slot, and hand-winding new copper — hundreds of turns through dozens of slots, in the exact pattern the manufacturer specified. One wrong connection and the entire unit is dead.</p>
+                <p><strong>Common reasons for stator failure:</strong> Insulation breakdown from heat, moisture intrusion, overloading, age, and vibration-related wire fatigue.</p>
+            </div>
+        </div>
+
+        <!-- TRANSFORMER -->
+        <div id="transformer-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Transformer &amp; Inductor Core</h2>
+                    <p class="text-muted">Corroded core replacement, winding rebuild, output rectifier repair</p>
+                </div>
+                <span class="tier-badge tier-badge--5">Tier 5 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Severely corroded transformer core — lamination stack rusted into a solid mass')">
+                    <img src="../images/transformer/corroded-core-closeup.jpeg" alt="Corroded transformer core closeup" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Corroded Core</h4>
+                        <p>Rust destroys from within</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Transformer core with copper windings on corroded base — moisture damage over years')">
+                    <img src="../images/transformer/core-rusty-copper-windings.jpeg" alt="Transformer core with rusty copper windings" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Damaged Windings</h4>
+                        <p>Moisture destroys insulation</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Clean rebuilt transformer ready for installation')">
+                    <img src="../images/transformer/clean-rebuilt-transformer.jpeg" alt="Clean rebuilt transformer" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Rebuilt Transformer</h4>
+                        <p>New core, new windings</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Transformer core with ceramic insulated windings — partially corroded')">
+                    <img src="../images/transformer/core-partially-corroded-ceramic.jpeg" alt="Transformer core partially corroded with ceramic windings" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Partial Corrosion</h4>
+                        <p>Early-stage damage</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Inductor assembly with labeled components for reassembly')">
+                    <img src="../images/transformer/inductor-assembly-labeled.jpeg" alt="Inductor assembly with labeled parts" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Inductor Assembly</h4>
+                        <p>Every part documented</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="transformer" onclick="openLightbox(this.querySelector('img').src, 'Transformer/rectifier assembly removed from welder for bench repair')">
+                    <img src="../images/transformer/rectifier-assembly-removed.jpeg" alt="Rectifier assembly removed for repair" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Rectifier Assembly</h4>
+                        <p>Output stage of the welder</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:1.5rem;margin-top:1.5rem;">
+                <h4>What's Involved</h4>
+                <p>The transformer is what converts generator output into welding current. When the lamination core corrodes — often from moisture entering the machine during outdoor storage — the entire transformer assembly must be rebuilt or replaced. This involves removing a component that weighs 50+ pounds, sourcing or building a replacement core, winding new primary and secondary coils, and testing output characteristics. This is the most specialized repair we perform.</p>
+                <p><strong>Common reasons for failure:</strong> Outdoor storage without covers, condensation from temperature swings, flooding, and age. A corroded transformer core cannot be repaired — it must be replaced.</p>
+            </div>
+        </div>
+
+        <!-- ELECTRONICS -->
+        <div id="electronics-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Control Electronics</h2>
+                    <p class="text-muted">Circuit board repair, capacitor replacement, control module diagnostics</p>
+                </div>
+                <span class="tier-badge tier-badge--4">Tier 3-4 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="electronics" onclick="openLightbox(this.querySelector('img').src, 'Modern Miller control board — surface-mount components require specialized tools')">
+                    <img src="../images/electronics/modern-blue-control-board.jpeg" alt="Modern Miller control board with surface-mount components" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Modern Control Board</h4>
+                        <p>Surface-mount technology</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="electronics" onclick="openLightbox(this.querySelector('img').src, 'Burned circuit board traces — component-level repair required')">
+                    <img src="../images/electronics/burned-circuit-traces.jpeg" alt="Circuit board with burned traces" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Burned Traces</h4>
+                        <p>Component-level repair</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="electronics" onclick="openLightbox(this.querySelector('img').src, 'Blue capacitor bank — stores energy for welding output')">
+                    <img src="../images/electronics/blue-capacitor-bank.jpeg" alt="Blue capacitor bank inside welder" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Capacitor Bank</h4>
+                        <p>Energy storage for welding</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="electronics" onclick="openLightbox(this.querySelector('img').src, 'Older analog control boards — through-hole components, still repairable')">
+                    <img src="../images/electronics/older-analog-boards.jpeg" alt="Older analog control boards" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Analog Boards</h4>
+                        <p>Older but still repairable</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:var(--off-white);border-radius:8px;padding:1.5rem;margin-top:1.5rem;">
+                <h4>What's Involved</h4>
+                <p>The control board is the brain of your welder — it regulates output current, manages engine speed, and protects components from overload. When traces burn or components fail, the entire machine goes down. Repair requires identifying the failed component, tracing the circuit, and replacing or rebuilding the damaged section. Modern boards use surface-mount components that require specialized soldering equipment.</p>
+                <p><strong>Common reasons for failure:</strong> Power surges, overloading, moisture intrusion, component aging, and vibration-induced solder cracks.</p>
+            </div>
+        </div>
+
+        <!-- WIRING -->
+        <div id="wiring-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Electrical Wiring</h2>
+                    <p class="text-muted">Wiring harnesses, connectors, solenoids, switches</p>
+                </div>
+                <span class="tier-badge tier-badge--3">Tier 2-3 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="wiring" onclick="openLightbox(this.querySelector('img').src, 'Trombetta solenoid — common starter solenoid failure point')">
+                    <img src="../images/wiring/trombetta-solenoid.jpeg" alt="Trombetta starter solenoid" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Trombetta Solenoid</h4>
+                        <p>Common failure point</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wiring" onclick="openLightbox(this.querySelector('img').src, 'Complete wiring harness removed and laid out for inspection')">
+                    <img src="../images/wiring/harness-removed-laid-out.jpeg" alt="Wiring harness removed and laid out" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Harness Inspection</h4>
+                        <p>Every wire checked</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wiring" onclick="openLightbox(this.querySelector('img').src, 'Damaged connectors showing corrosion and heat damage')">
+                    <img src="../images/wiring/damaged-connectors-closeup.jpeg" alt="Damaged wiring connectors with corrosion" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Damaged Connectors</h4>
+                        <p>Corrosion causes intermittent failures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUEL SYSTEM -->
+        <div id="fuel-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Fuel System</h2>
+                    <p class="text-muted">Fuel pump, injectors, electronic fuel injection, carburetor, fuel tank</p>
+                </div>
+                <span class="tier-badge tier-badge--3">Tier 2-3 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="fuel" onclick="openLightbox(this.querySelector('img').src, 'Fuel pump, filter, and supply lines — fuel delivery system')">
+                    <img src="../images/fuel-system/fuel-pump-filter-lines.jpeg" alt="Fuel pump, filter, and supply lines" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Fuel Delivery</h4>
+                        <p>Pump, filter, and lines</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="fuel" onclick="openLightbox(this.querySelector('img').src, 'Fuel tank on custom fabricated mounting frame')">
+                    <img src="../images/fuel-system/fuel-tank-on-frame.jpeg" alt="Fuel tank mounted on custom frame" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Fuel Tank</h4>
+                        <p>Tank and mounting system</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="fuel" onclick="openLightbox(this.querySelector('img').src, 'Engine with electronic fuel injection module visible')">
+                    <img src="../images/fuel-system/engine-efi-module.jpeg" alt="Electronic fuel injection module on engine" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Electronic Fuel Injection</h4>
+                        <p>Computer-controlled fuel delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BODY & FRAME -->
+        <div id="body-section" style="margin-bottom:4rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Body &amp; Frame</h2>
+                    <p class="text-muted">Panel replacement, painting, custom fabrication, frame repair</p>
+                </div>
+                <span class="tier-badge tier-badge--3">Tier 2-4 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Body panels freshly painted in Miller blue, drying in greenhouse')">
+                    <img src="../images/body/panel-miller-blue-greenhouse-01.jpeg" alt="Body panels painted Miller blue drying" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Fresh Paint</h4>
+                        <p>Miller blue restoration</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Custom fabricated sheet metal bracket — precision metalwork')">
+                    <img src="../images/body/custom-fabricated-sheet-metal.jpeg" alt="Custom fabricated sheet metal bracket" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Custom Fabrication</h4>
+                        <p>When parts don't exist, we make them</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Frame stripped to bare metal for complete restoration')">
+                    <img src="../images/body/frame-stripped-fan-housing.jpeg" alt="Frame stripped for restoration" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Frame-Off Restoration</h4>
+                        <p>Stripped to bare metal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIAGNOSTICS -->
+        <div id="diagnostic-section" style="margin-bottom:2rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                <div>
+                    <h2>Electronic Diagnostics</h2>
+                    <p class="text-muted">Kohler factory diagnostic software, multimeter testing, data analysis</p>
+                </div>
+                <span class="tier-badge tier-badge--4">Tier 3-4 Difficulty</span>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="diagnostic" onclick="openLightbox(this.querySelector('img').src, 'Kohler diagnostic software showing engine gauges — air flow, fuel ratio, injector timing')">
+                    <img src="../images/diagnostic/kohler-software-gauges.jpeg" alt="Kohler diagnostic software gauges" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Factory Diagnostics</h4>
+                        <p>Reading the engine's brain</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="diagnostic" onclick="openLightbox(this.querySelector('img').src, 'Kohler diagnostic data — air flow correction, desired air-fuel ratio, injector timing values')">
+                    <img src="../images/diagnostic/kohler-software-data.jpeg" alt="Kohler diagnostic data readout" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Live Data Stream</h4>
+                        <p>Real-time engine parameters</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="diagnostic" onclick="openLightbox(this.querySelector('img').src, 'Fuel gauge and hour meter — tracking machine usage and fuel level')">
+                    <img src="../images/diagnostic/fuel-hour-gauge.jpeg" alt="Fuel and hour gauge" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <h4>Instrumentation</h4>
+                        <p>Gauges and hour tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-4" style="padding:2rem 0;">
+            <h2>Think You Know What's Wrong?</h2>
+            <p class="text-muted mb-3">Use our free assessment tool to get an honest difficulty rating and recommendation.</p>
+            <a href="assessment.html" class="btn btn--primary btn--large">&#9874; Start Your Assessment</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <h4>Jeff Nading Welder Repair</h4>
+                <p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="what-we-fix.html">What We Fix</a></li>
+                    <li><a href="assessment.html">Repair Assessment</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gallery.html">Before &amp; After</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="about.html">About Jeff</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            &copy; 2026 Jeff Nading Welder Repair. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- Don't Panic Button -->
+<div class="dont-panic" id="dontPanic">
+    <button class="dont-panic__btn" onclick="togglePanicPanel()">
+        <span class="icon">&#128172;</span> Don't Panic
+    </button>
+</div>
+<div class="dont-panic__panel" id="panicPanel">
+    <div class="dont-panic__panel-header">
+        <h3>We've Seen It All — We Can Help</h3>
+        <button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button>
+    </div>
+    <div class="dont-panic__panel-body">
+        <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+        <div class="contact-line"><span class="icon">&#128222;</span><span>Call or Text: <strong>(555) 123-4567</strong></span></div>
+        <div class="contact-line"><span class="icon">&#9993;</span><span>Email: <strong>jeff@welderrepair.com</strong></span></div>
+        <div class="dont-panic__assessment-note" id="panicAssessmentNote">
+            <strong>Save time for both of us:</strong> Complete our free <a href="assessment.html">Repair Assessment</a> first.
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header"><h3>Your Cart</h3><button class="cart-sidebar__close" onclick="toggleCart()">&times;</button></div>
+    <div class="cart-sidebar__items" id="cartItems"></div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;">
+        <div class="cart-sidebar__total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+        <button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Jeff Nading for welder and generator repair. Complete our free assessment first for the fastest service.">
+    <title>Contact — Jeff Nading Welder Repair</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="../index.html" class="nav__logo">
+            <div class="nav__logo-icon">JN</div>
+            Jeff Nading <span>Welder Repair</span>
+        </a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="what-we-fix.html">What We Fix</a></li>
+            <li><a href="assessment.html">Repair Assessment</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="gallery.html">Before &amp; After</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">&#128722;<span class="cart-icon__count" id="cartCount" style="display:none;">0</span></div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="section section--blue" style="padding:3rem 0;">
+    <div class="container">
+        <div class="section-header section-header--light">
+            <h1>Contact Jeff</h1>
+            <p>Ready to get your welder fixed? Reach out below.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Assessment Gate / Contact Content -->
+<section class="section">
+    <div class="container">
+
+        <!-- Assessment prompt (shown if assessment not completed) -->
+        <div id="assessmentGate" style="max-width:700px;margin:0 auto;">
+            <div style="background:var(--white);border-radius:12px;padding:2.5rem;box-shadow:var(--shadow-md);text-align:center;border-top:4px solid var(--miller-blue);">
+                <div style="font-size:3rem;margin-bottom:1rem;">&#9874;</div>
+                <h2>Complete Your Assessment First</h2>
+                <p class="text-muted" style="max-width:500px;margin:1rem auto;">Our free Repair Assessment Tool takes about 2 minutes and saves time for both you and Jeff. He'll know your problem, its difficulty level, and your skill level before you even talk.</p>
+                <a href="assessment.html" class="btn btn--primary btn--large mt-3">Start Free Assessment</a>
+                <p class="text-muted mt-3" style="font-size:0.85rem;">Already completed the assessment? Your results are saved automatically.</p>
+            </div>
+        </div>
+
+        <!-- Contact info (shown after assessment completed) -->
+        <div id="contactContent" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="contact-grid">
+
+                <!-- Contact Info -->
+                <div>
+                    <h2>Get in Touch</h2>
+
+                    <!-- Assessment summary if available -->
+                    <div id="assessmentSummary" style="background:#e8f1fc;border:1px solid var(--miller-blue);border-radius:8px;padding:1.25rem;margin-bottom:2rem;display:none;">
+                        <h4 style="color:var(--miller-blue);margin-bottom:0.5rem;">&#9989; Your Assessment Summary</h4>
+                        <p id="summaryText" style="font-size:0.9rem;margin:0;"></p>
+                    </div>
+
+                    <div style="margin-bottom:2rem;">
+                        <div class="contact-line" style="padding:1rem 0;border-bottom:1px solid var(--light-gray);font-size:1.1rem;">
+                            <span class="icon" style="font-size:1.5rem;">&#128222;</span>
+                            <div>
+                                <strong>Phone / Text</strong><br>
+                                <a href="tel:+15551234567" style="font-size:1.25rem;font-weight:700;">(555) 123-4567</a>
+                            </div>
+                        </div>
+                        <div class="contact-line" style="padding:1rem 0;border-bottom:1px solid var(--light-gray);font-size:1.1rem;">
+                            <span class="icon" style="font-size:1.5rem;">&#9993;</span>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:jeff@welderrepair.com" style="font-size:1.1rem;">jeff@welderrepair.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-line" style="padding:1rem 0;font-size:1.1rem;">
+                            <span class="icon" style="font-size:1.5rem;">&#128205;</span>
+                            <div>
+                                <strong>Location</strong><br>
+                                <span class="text-muted">Contact for shop address and hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background:var(--off-white);border-radius:8px;padding:1.25rem;">
+                        <h4>When You Call or Email</h4>
+                        <p class="text-muted" style="font-size:0.9rem;">Mention that you completed the online assessment — Jeff will already have context about your problem. If you can, have your welder's model number and serial number ready.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <h2>Send a Message</h2>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/placeholder" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Smith">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        <div class="form-group">
+                            <label for="welderModel">Welder Model (if known)</label>
+                            <select id="welderModel" name="welder_model">
+                                <option value="">Select your model...</option>
+                                <option value="bobcat-225">Miller Bobcat 225</option>
+                                <option value="bobcat-225nt">Miller Bobcat 225 NT</option>
+                                <option value="bobcat-250">Miller Bobcat 250</option>
+                                <option value="trailblazer">Miller Trailblazer</option>
+                                <option value="hobart-champion">Hobart Champion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Describe Your Problem</label>
+                            <textarea id="message" name="message" required placeholder="Tell Jeff what's going on with your welder..."></textarea>
+                        </div>
+
+                        <!-- Hidden field for assessment data -->
+                        <input type="hidden" id="assessmentDataField" name="assessment_data" value="">
+
+                        <button type="submit" class="btn btn--primary" style="width:100%;">Send Message</button>
+                        <p class="text-muted mt-2" style="font-size:0.8rem;text-align:center;">Your assessment results will be included with this message automatically.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col"><h4>Jeff Nading Welder Repair</h4><p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p></div>
+            <div class="footer__col"><h4>Quick Links</h4><ul><li><a href="what-we-fix.html">What We Fix</a></li><li><a href="assessment.html">Repair Assessment</a></li><li><a href="shop.html">Shop</a></li><li><a href="gallery.html">Before &amp; After</a></li></ul></div>
+            <div class="footer__col"><h4>Information</h4><ul><li><a href="about.html">About Jeff</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        </div>
+        <div class="footer__bottom">&copy; 2026 Jeff Nading Welder Repair. All rights reserved.</div>
+    </div>
+</footer>
+
+<div class="dont-panic"><button class="dont-panic__btn" onclick="togglePanicPanel()"><span class="icon">&#128172;</span> Don't Panic</button></div>
+<div class="dont-panic__panel" id="panicPanel">
+    <div class="dont-panic__panel-header"><h3>We've Seen It All — We Can Help</h3><button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button></div>
+    <div class="dont-panic__panel-body">
+        <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+        <div class="contact-line"><span class="icon">&#128222;</span><span>Call or Text: <strong>(555) 123-4567</strong></span></div>
+        <div class="contact-line"><span class="icon">&#9993;</span><span>Email: <strong>jeff@welderrepair.com</strong></span></div>
+        <div class="dont-panic__assessment-note" id="panicAssessmentNote"><strong>Save time for both of us:</strong> Complete our free <a href="assessment.html">Repair Assessment</a> first.</div>
+    </div>
+</div>
+
+<div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header"><h3>Your Cart</h3><button class="cart-sidebar__close" onclick="toggleCart()">&times;</button></div>
+    <div class="cart-sidebar__items" id="cartItems"></div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;"><div class="cart-sidebar__total"><span>Total:</span><span id="cartTotal">$0.00</span></div><button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">Proceed to Checkout</button></div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+<script src="../js/main.js"></script>
+<script src="../js/cart.js"></script>
+<script>
+// Contact page assessment gate logic
+document.addEventListener('DOMContentLoaded', function() {
+    const completed = localStorage.getItem('assessmentCompleted');
+    const gate = document.getElementById('assessmentGate');
+    const content = document.getElementById('contactContent');
+
+    if (completed === 'true') {
+        gate.style.display = 'none';
+        content.style.display = 'block';
+
+        // Show assessment summary if available
+        const data = JSON.parse(localStorage.getItem('assessmentData') || 'null');
+        if (data) {
+            const summary = document.getElementById('assessmentSummary');
+            const summaryText = document.getElementById('summaryText');
+            summary.style.display = 'block';
+            summaryText.innerHTML = `
+                <strong>Problem:</strong> ${data.description}<br>
+                <strong>Repair Tier:</strong> ${data.tier}/5 &nbsp;|&nbsp;
+                <strong>Difficulty:</strong> ${data.difficulty}/10 &nbsp;|&nbsp;
+                <strong>Your Skill Level:</strong> ${data.skillLevel}<br>
+                <strong>Recommendation:</strong> ${data.recommendation === 'diy' ? 'Do it yourself' : data.recommendation === 'caution' ? 'Proceed with caution' : 'Professional repair recommended'}
+            `;
+
+            // Pre-fill hidden assessment data field
+            const dataField = document.getElementById('assessmentDataField');
+            if (dataField) {
+                dataField.value = JSON.stringify(data);
+            }
+
+            // Pre-fill message with assessment context
+            const messageField = document.getElementById('message');
+            if (messageField && !messageField.value) {
+                messageField.value = `Assessment completed: ${data.description}\nRepair Tier: ${data.tier}/5, Difficulty: ${data.difficulty}/10\nMy skill level: ${data.skillLevel}\nRecommendation: ${data.recommendation}`;
+            }
+
+            // Pre-fill model if available
+            const modelField = document.getElementById('welderModel');
+            if (modelField && data.model) {
+                for (let opt of modelField.options) {
+                    if (opt.value === data.model) {
+                        opt.selected = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    // Form submission handling
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In production, this would submit to Formspree or similar.
+            // For now, show confirmation.
+            alert('Message sent! Jeff will review your assessment results and get back to you soon.\n\nFor urgent issues, call or text directly: (555) 123-4567');
+            form.reset();
+        });
+    }
+});
+</script>
+</body>
+</html>

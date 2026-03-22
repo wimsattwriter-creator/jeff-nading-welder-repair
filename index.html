@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jeff Nading — Expert Miller Bobcat welder and generator repair. Engine rebuilds, stator rewinding, circuit board repair, complete restorations. Serving welders and generators of all types.">
+    <title>Jeff Nading Miller Welder Repair — Expert Service & Restoration</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+            <div class="nav__logo-icon">JN</div>
+            Jeff Nading <span>Welder Repair</span>
+        </a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="pages/what-we-fix.html">What We Fix</a></li>
+            <li><a href="pages/assessment.html">Repair Assessment</a></li>
+            <li><a href="pages/shop.html">Shop</a></li>
+            <li><a href="pages/gallery.html">Before &amp; After</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+        <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">
+                &#128722;
+                <span class="cart-icon__count" id="cartCount" style="display:none;">0</span>
+            </div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__content">
+            <h1>Your Welder <span>Deserves an Expert</span></h1>
+            <p class="hero__subtitle">
+                Specialized Miller Bobcat and engine-driven welder/generator repair.
+                From routine maintenance to complete ground-up restorations —
+                we bring dead machines back to life.
+            </p>
+            <div class="hero__actions">
+                <a href="pages/assessment.html" class="btn btn--primary btn--large">
+                    &#9874; Diagnose Your Problem
+                </a>
+                <a href="pages/what-we-fix.html" class="btn btn--secondary btn--large">
+                    See What We Fix
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Do — Service Cards -->
+<section class="section section--light">
+    <div class="container">
+        <div class="section-header">
+            <h2>What Sets Us Apart</h2>
+            <p>Most shops won't touch a welder's internals. We specialize in the repairs others can't — or won't — do.</p>
+        </div>
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="service-card__icon">&#9881;</div>
+                <h3 class="service-card__title">Engine Rebuilds</h3>
+                <p class="service-card__text">Complete Kohler engine teardowns and rebuilds. Pistons, cylinders, valve jobs, timing, crankshaft work — done right.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#9889;</div>
+                <h3 class="service-card__title">Stator Rewinding</h3>
+                <p class="service-card__text">Hand-wound stator rebuilds — slot by slot. When your generator output dies, this is the repair that brings it back.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#128295;</div>
+                <h3 class="service-card__title">Transformer Cores</h3>
+                <p class="service-card__text">Corroded transformer core replacement. The heart of your welder's output — we rebuild what rust destroys.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#128187;</div>
+                <h3 class="service-card__title">Circuit Board Repair</h3>
+                <p class="service-card__text">Component-level circuit board diagnostics and repair. Burned traces, failed components — we fix the brain of your machine.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#9981;</div>
+                <h3 class="service-card__title">Electronic Diagnostics</h3>
+                <p class="service-card__text">Kohler electronic fuel injection diagnostics with factory software. We read what your engine is thinking.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-card__icon">&#127912;</div>
+                <h3 class="service-card__title">Complete Restorations</h3>
+                <p class="service-card__text">Ground-up restorations: engine, generator, electrical, body panels, paint. Your welder comes back better than new.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section section--dark">
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat__number">6</span>
+                <span class="stat__label">Repair Specialties</span>
+            </div>
+            <div class="stat">
+                <span class="stat__number">100+</span>
+                <span class="stat__label">Machines Restored</span>
+            </div>
+            <div class="stat">
+                <span class="stat__number">5</span>
+                <span class="stat__label">Difficulty Tiers We Handle</span>
+            </div>
+            <div class="stat">
+                <span class="stat__number">1</span>
+                <span class="stat__label">Expert You Need</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works — Assessment CTA -->
+<section class="section section--light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Not Sure What's Wrong?</h2>
+            <p>Our free repair assessment tool helps you understand your problem, its complexity, and whether you can tackle it yourself.</p>
+        </div>
+        <div class="grid grid--3">
+            <div class="card">
+                <div class="card__body text-center">
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">&#128221;</div>
+                    <h3 class="card__title">1. Describe It</h3>
+                    <p class="card__text">Tell us what's happening — type it out or use voice input. No jargon needed, just describe the symptoms.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__body text-center">
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">&#128200;</div>
+                    <h3 class="card__title">2. See the Difficulty</h3>
+                    <p class="card__text">We'll show you exactly how complex the repair is — with real photos from our shop showing what's involved inside.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__body text-center">
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">&#9989;</div>
+                    <h3 class="card__title">3. Get Your Answer</h3>
+                    <p class="card__text">Based on the repair difficulty and your skill level, you'll get an honest recommendation: do it yourself or call a professional.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="pages/assessment.html" class="btn btn--primary btn--large">
+                &#9874; Start Your Free Assessment
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Repair Photos -->
+<section class="section section--blue">
+    <div class="container">
+        <div class="section-header section-header--light">
+            <h2>Inside the Shop</h2>
+            <p>Real repairs, real complexity. This is what professional welder repair looks like.</p>
+        </div>
+        <div class="gallery-grid" style="max-height:none;">
+            <div class="gallery-item">
+                <img src="images/stator/stator-being-rewound.jpeg" alt="Stator being hand-rewound, copper wire threaded through numbered lamination slots" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Stator Rewinding</h4>
+                    <p>Hand-wound, slot by slot</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/transformer/corroded-core-closeup.jpeg" alt="Severely corroded transformer core, lamination stack rusted through" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Transformer Core Damage</h4>
+                    <p>Corrosion destroys from within</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/engine/cylinder-bore-scoring.jpeg" alt="Engine cylinder bore showing scoring and wear damage" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Cylinder Bore Inspection</h4>
+                    <p>Scoring means a rebuild</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/electronics/burned-circuit-traces.jpeg" alt="Circuit board with burned traces requiring component-level repair" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Circuit Board Repair</h4>
+                    <p>Component-level diagnostics</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/diagnostic/kohler-software-gauges.jpeg" alt="Kohler engine diagnostic software showing fuel injection data" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Electronic Diagnostics</h4>
+                    <p>Factory software analysis</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/complete-units/bobcat-225nt-restored-front.jpeg" alt="Fully restored Miller Bobcat 225 NT welder generator" loading="lazy">
+                <div class="gallery-item__overlay">
+                    <h4>Complete Restoration</h4>
+                    <p>Better than factory new</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="pages/gallery.html" class="btn btn--secondary">View Full Gallery</a>
+        </div>
+    </div>
+</section>
+
+<!-- Shop CTA -->
+<section class="section section--light">
+    <div class="container">
+        <div class="section-header">
+            <h2>Parts &amp; Supplies</h2>
+            <p>Quality parts for your Miller welder and generator. Hand-picked by a technician who knows what works.</p>
+        </div>
+        <div class="text-center">
+            <a href="pages/shop.html" class="btn btn--primary btn--large">
+                &#128722; Browse the Shop
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <h4>Jeff Nading Welder Repair</h4>
+                <p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="pages/what-we-fix.html">What We Fix</a></li>
+                    <li><a href="pages/assessment.html">Repair Assessment</a></li>
+                    <li><a href="pages/shop.html">Shop</a></li>
+                    <li><a href="pages/gallery.html">Before &amp; After</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="pages/about.html">About Jeff</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Get Help Now</h4>
+                <p style="font-size:0.9rem;color:#999;">Use our free <a href="pages/assessment.html">Repair Assessment Tool</a> to diagnose your problem and get an honest recommendation.</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            &copy; 2026 Jeff Nading Welder Repair. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+<!-- "Don't Panic" Floating Button -->
+<div class="dont-panic" id="dontPanic">
+    <button class="dont-panic__btn" onclick="togglePanicPanel()">
+        <span class="icon">&#128172;</span>
+        Don't Panic
+    </button>
+</div>
+
+<!-- "Don't Panic" Slide-Up Panel -->
+<div class="dont-panic__panel" id="panicPanel">
+    <div class="dont-panic__panel-header">
+        <h3>We've Seen It All — We Can Help</h3>
+        <button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button>
+    </div>
+    <div class="dont-panic__panel-body">
+        <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+        <div class="contact-line">
+            <span class="icon">&#128222;</span>
+            <span>Call or Text: <strong>(555) 123-4567</strong></span>
+        </div>
+        <div class="contact-line">
+            <span class="icon">&#9993;</span>
+            <span>Email: <strong>jeff@welderrepair.com</strong></span>
+        </div>
+        <div class="dont-panic__assessment-note" id="panicAssessmentNote">
+            <strong>Save time for both of us:</strong> Complete our free
+            <a href="pages/assessment.html">Repair Assessment</a> first.
+            It takes 2 minutes and helps me understand your problem before we talk.
+        </div>
+    </div>
+</div>
+
+<!-- Cart Overlay -->
+<div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+        <h3>Your Cart</h3>
+        <button class="cart-sidebar__close" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-sidebar__items" id="cartItems">
+        <div class="cart-empty">
+            <div class="icon">&#128722;</div>
+            <p>Your cart is empty</p>
+            <a href="pages/shop.html" class="btn btn--primary btn--small mt-2">Browse Shop</a>
+        </div>
+    </div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;">
+        <div class="cart-sidebar__total">
+            <span>Total:</span>
+            <span id="cartTotal">$0.00</span>
+        </div>
+        <button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">
+            Proceed to Checkout
+        </button>
+    </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+</body>
+</html>

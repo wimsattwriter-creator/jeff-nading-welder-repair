@@ -1,0 +1,18 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+claude-resume.log
+claude_resume.log
+claude-resume.sh
+claude.txt

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free repair assessment tool — describe your welder problem, see the difficulty rating, assess your skills, and get an honest recommendation.">
+    <title>Repair Assessment Tool — Jeff Nading Welder Repair</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav__inner">
+        <a href="../index.html" class="nav__logo">
+            <div class="nav__logo-icon">JN</div>
+            Jeff Nading <span>Welder Repair</span>
+        </a>
+        <ul class="nav__links" id="navLinks">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="what-we-fix.html">What We Fix</a></li>
+            <li><a href="assessment.html" class="active">Repair Assessment</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="gallery.html">Before &amp; After</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+            <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">&#128722;<span class="cart-icon__count" id="cartCount" style="display:none;">0</span></div>
+            <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="section section--blue" style="padding:3rem 0;">
+    <div class="container">
+        <div class="section-header section-header--light">
+            <h1>Repair Assessment Tool</h1>
+            <p>Describe your problem, see how complex the repair really is, and get an honest recommendation based on your skill level.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Assessment Tool -->
+<section class="section">
+    <div class="container">
+        <div class="assessment" id="assessmentTool">
+
+            <!-- Progress Bar -->
+            <div class="assessment__progress" id="progressBar">
+                <div class="assessment__progress-step active" data-step="1"></div>
+                <div class="assessment__progress-step" data-step="2"></div>
+                <div class="assessment__progress-step" data-step="3"></div>
+                <div class="assessment__progress-step" data-step="4"></div>
+                <div class="assessment__progress-step" data-step="5"></div>
+            </div>
+
+            <!-- STEP 1: Describe Your Problem -->
+            <div class="assessment__step active" id="step1">
+                <div class="assessment__question">
+                    <h3>Step 1: What's Going On With Your Welder?</h3>
+                    <p class="text-muted">Describe the problem in your own words. No jargon needed — just tell us what's happening.</p>
+                    <textarea class="assessment__textarea" id="problemDescription" placeholder="Example: My welder cranks but won't start. I hear it turning over but it just won't fire up. It was working fine last week..."></textarea>
+                    <button class="assessment__speech-btn" id="speechBtn" onclick="toggleSpeech()">
+                        &#127908; Speak Instead
+                    </button>
+                    <p class="text-muted mt-2" style="font-size:0.85rem;" id="speechStatus"></p>
+                </div>
+                <div class="assessment__nav">
+                    <div></div>
+                    <button class="btn btn--primary" onclick="goToStep(2)">Next: Select Symptoms &#8594;</button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Symptom Selection -->
+            <div class="assessment__step" id="step2">
+                <div class="assessment__question">
+                    <h3>Step 2: What Model Welder?</h3>
+                    <div class="assessment__options" id="modelOptions">
+                        <label class="assessment__option" onclick="selectOption(this, 'model')">
+                            <input type="radio" name="model" value="bobcat-225">
+                            <span class="radio-custom"></span>
+                            <span>Miller Bobcat 225 / 225 NT</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'model')">
+                            <input type="radio" name="model" value="bobcat-250">
+                            <span class="radio-custom"></span>
+                            <span>Miller Bobcat 250</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'model')">
+                            <input type="radio" name="model" value="trailblazer">
+                            <span class="radio-custom"></span>
+                            <span>Miller Trailblazer</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'model')">
+                            <input type="radio" name="model" value="hobart">
+                            <span class="radio-custom"></span>
+                            <span>Hobart Champion</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'model')">
+                            <input type="radio" name="model" value="other">
+                            <span class="radio-custom"></span>
+                            <span>Other engine-driven welder/generator</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h3>What's the Main Symptom?</h3>
+                    <div class="assessment__options" id="symptomOptions">
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="wont-start">
+                            <span class="radio-custom"></span>
+                            <span>Won't start (engine doesn't run)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="no-weld-output">
+                            <span class="radio-custom"></span>
+                            <span>Starts but no welding output</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="erratic-arc">
+                            <span class="radio-custom"></span>
+                            <span>Erratic arc / poor weld quality</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="no-generator">
+                            <span class="radio-custom"></span>
+                            <span>No generator power (auxiliary outlets dead)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="overheating">
+                            <span class="radio-custom"></span>
+                            <span>Overheating / shutting down</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="noise">
+                            <span class="radio-custom"></span>
+                            <span>Unusual noise (knocking, grinding, whining)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="smoke">
+                            <span class="radio-custom"></span>
+                            <span>Smoke (exhaust, electrical, from body)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="leak">
+                            <span class="radio-custom"></span>
+                            <span>Oil leak / fuel leak / coolant leak</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="physical-damage">
+                            <span class="radio-custom"></span>
+                            <span>Physical damage (body, controls, connections)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectOption(this, 'symptom')">
+                            <input type="radio" name="symptom" value="electrical-smell">
+                            <span class="radio-custom"></span>
+                            <span>Electrical or burning smell</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__nav">
+                    <button class="btn btn--outline-blue" onclick="goToStep(1)">&#8592; Back</button>
+                    <button class="btn btn--primary" onclick="goToStep(3)">Next: Follow-Up Questions &#8594;</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Follow-up Questions (dynamic based on symptom) -->
+            <div class="assessment__step" id="step3">
+                <div class="assessment__question" id="followUpQuestions">
+                    <h3>Step 3: A Few More Details</h3>
+                    <p class="text-muted">These questions help narrow down the specific issue.</p>
+                    <div id="dynamicQuestions">
+                        <!-- Populated by JavaScript based on symptom selection -->
+                    </div>
+                </div>
+                <div class="assessment__nav">
+                    <button class="btn btn--outline-blue" onclick="goToStep(2)">&#8592; Back</button>
+                    <button class="btn btn--primary" onclick="goToStep(4)">Next: Your Skill Level &#8594;</button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Skill Assessment -->
+            <div class="assessment__step" id="step4">
+                <div class="assessment__question">
+                    <h3>Step 4: Your Skill Level</h3>
+                    <p class="text-muted">Be honest — this helps us give you a realistic recommendation. No judgment either way.</p>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Small engine experience?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'engine-exp', 0)">
+                            <input type="radio" name="engine-exp" value="0"><span class="radio-custom"></span>
+                            <span>None — never worked on a small engine</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'engine-exp', 1)">
+                            <input type="radio" name="engine-exp" value="1"><span class="radio-custom"></span>
+                            <span>Basic — changed oil and filters</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'engine-exp', 2)">
+                            <input type="radio" name="engine-exp" value="2"><span class="radio-custom"></span>
+                            <span>Experienced — rebuilt or repaired engines</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Do you own a multimeter and know how to use it?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'multimeter', 0)">
+                            <input type="radio" name="multimeter" value="0"><span class="radio-custom"></span>
+                            <span>No</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'multimeter', 1)">
+                            <input type="radio" name="multimeter" value="1"><span class="radio-custom"></span>
+                            <span>Own one but not confident using it</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'multimeter', 2)">
+                            <input type="radio" name="multimeter" value="2"><span class="radio-custom"></span>
+                            <span>Use regularly and understand readings</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Electrical wiring or soldering experience?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'electrical', 0)">
+                            <input type="radio" name="electrical" value="0"><span class="radio-custom"></span>
+                            <span>None</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'electrical', 1)">
+                            <input type="radio" name="electrical" value="1"><span class="radio-custom"></span>
+                            <span>Basic wiring (household, automotive)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'electrical', 2)">
+                            <input type="radio" name="electrical" value="2"><span class="radio-custom"></span>
+                            <span>Soldering, reading schematics and wiring diagrams</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Access to an engine hoist or lift?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'hoist', 0)">
+                            <input type="radio" name="hoist" value="0"><span class="radio-custom"></span>
+                            <span>No</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'hoist', 1)">
+                            <input type="radio" name="hoist" value="1"><span class="radio-custom"></span>
+                            <span>Improvised setup (come-along, tractor, etc.)</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'hoist', 2)">
+                            <input type="radio" name="hoist" value="2"><span class="radio-custom"></span>
+                            <span>Proper engine hoist or shop crane</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Comfortable reading wiring diagrams?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'diagrams', 0)">
+                            <input type="radio" name="diagrams" value="0"><span class="radio-custom"></span>
+                            <span>Can't read them</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'diagrams', 1)">
+                            <input type="radio" name="diagrams" value="1"><span class="radio-custom"></span>
+                            <span>Can follow simple ones with effort</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'diagrams', 2)">
+                            <input type="radio" name="diagrams" value="2"><span class="radio-custom"></span>
+                            <span>Comfortable with complex schematics</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Previous welder or generator repair experience?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'welder-exp', 0)">
+                            <input type="radio" name="welder-exp" value="0"><span class="radio-custom"></span>
+                            <span>None — first time dealing with a broken welder</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'welder-exp', 1)">
+                            <input type="radio" name="welder-exp" value="1"><span class="radio-custom"></span>
+                            <span>Basic operation and simple maintenance</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'welder-exp', 2)">
+                            <input type="radio" name="welder-exp" value="2"><span class="radio-custom"></span>
+                            <span>Have done maintenance and some repairs</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__question">
+                    <h4>Workshop and tools?</h4>
+                    <div class="assessment__options">
+                        <label class="assessment__option" onclick="selectSkill(this, 'tools', 0)">
+                            <input type="radio" name="tools" value="0"><span class="radio-custom"></span>
+                            <span>Minimal — basic hand tools only</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'tools', 1)">
+                            <input type="radio" name="tools" value="1"><span class="radio-custom"></span>
+                            <span>Decent set — socket sets, wrenches, basic power tools</span>
+                        </label>
+                        <label class="assessment__option" onclick="selectSkill(this, 'tools', 2)">
+                            <input type="radio" name="tools" value="2"><span class="radio-custom"></span>
+                            <span>Well-equipped shop with specialty tools</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="assessment__nav">
+                    <button class="btn btn--outline-blue" onclick="goToStep(3)">&#8592; Back</button>
+                    <button class="btn btn--primary" onclick="generateResults()">Get My Assessment &#8594;</button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Results -->
+            <div class="assessment__step" id="step5">
+                <div id="resultsContainer">
+                    <!-- Populated by JavaScript -->
+                </div>
+                <div class="assessment__nav" style="margin-top:2rem;">
+                    <button class="btn btn--outline-blue" onclick="resetAssessment()">&#8634; Start Over</button>
+                    <a href="contact.html" class="btn btn--primary" id="contactBtn" style="display:none;">Contact Jeff</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div class="footer__col">
+                <h4>Jeff Nading Welder Repair</h4>
+                <p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p>
+            </div>
+            <div class="footer__col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="what-we-fix.html">What We Fix</a></li>
+                    <li><a href="assessment.html">Repair Assessment</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="gallery.html">Before &amp; After</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="about.html">About Jeff</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">&copy; 2026 Jeff Nading Welder Repair. All rights reserved.</div>
+    </div>
+</footer>
+
+<!-- Don't Panic -->
+<div class="dont-panic"><button class="dont-panic__btn" onclick="togglePanicPanel()"><span class="icon">&#128172;</span> Don't Panic</button></div>
+<div class="dont-panic__panel" id="panicPanel">
+    <div class="dont-panic__panel-header"><h3>We've Seen It All — We Can Help</h3><button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button></div>
+    <div class="dont-panic__panel-body">
+        <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+        <div class="contact-line"><span class="icon">&#128222;</span><span>Call or Text: <strong>(555) 123-4567</strong></span></div>
+        <div class="contact-line"><span class="icon">&#9993;</span><span>Email: <strong>jeff@welderrepair.com</strong></span></div>
+        <div class="dont-panic__assessment-note" id="panicAssessmentNote">
+            <strong>You're already here!</strong> Finish the assessment and Jeff will have all the context he needs.
+        </div>
+    </div>
+</div>
+
+<div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header"><h3>Your Cart</h3><button class="cart-sidebar__close" onclick="toggleCart()">&times;</button></div>
+    <div class="cart-sidebar__items" id="cartItems"></div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display:none;">
+        <div class="cart-sidebar__total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+        <button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script src="../js/main.js"></script>
+<script src="../js/cart.js"></script>
+<script src="../js/assessment.js"></script>
+</body>
+</html>
