@@ -728,11 +728,11 @@ function generateResults() {
                     <p><strong>Ready to get this fixed?</strong></p>
                     <div class="contact-line" style="justify-content:center;border:none;padding:0.5rem;">
                         <span class="icon">&#128222;</span>
-                        <span>Call or Text: <strong>(555) 123-4567</strong></span>
+                        <span>Call or Text: <strong>(830) 660-7795</strong></span>
                     </div>
                     <div class="contact-line" style="justify-content:center;border:none;padding:0.5rem;">
                         <span class="icon">&#9993;</span>
-                        <span>Email: <strong>jeff@welderrepair.com</strong></span>
+                        <span>Email: <strong>jlnading@gmail.com</strong></span>
                     </div>
                     <p class="text-muted" style="font-size:0.85rem;margin-top:0.5rem;">Jeff now has context about your problem from this assessment.</p>
                 </div>
