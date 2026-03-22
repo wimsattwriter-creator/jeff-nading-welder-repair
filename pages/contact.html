@@ -121,13 +121,11 @@
                             <label for="welderModel">Welder Model (if known)</label>
                             <select id="welderModel" name="welder_model">
                                 <option value="">Select your model...</option>
-                                <option value="bobcat-225">Miller Bobcat 225</option>
-                                <option value="bobcat-225nt">Miller Bobcat 225 NT</option>
-                                <option value="bobcat-250">Miller Bobcat 250</option>
-                                <option value="trailblazer">Miller Trailblazer</option>
-                                <option value="hobart-champion">Hobart Champion</option>
-                                <option value="other">Other</option>
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="serialNum">Serial Number (optional)</label>
+                            <input type="text" id="serialNum" name="serial_number" placeholder="Example: KH123456" style="text-transform:uppercase;">
                         </div>
                         <div class="form-group">
                             <label for="message">Describe Your Problem</label>
@@ -150,7 +148,7 @@
 <footer class="footer">
     <div class="container">
         <div class="footer__grid">
-            <div class="footer__col"><h4>Jeff Nading Welder Repair</h4><p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p></div>
+            <div class="footer__col"><h4>Jeff Nading Welder Repair</h4><p style="font-size:0.9rem;color:#999;">Expert engine-driven welder/generator repair and parts.</p></div>
             <div class="footer__col"><h4>Quick Links</h4><ul><li><a href="what-we-fix.html">What We Fix</a></li><li><a href="assessment.html">Repair Assessment</a></li><li><a href="shop.html">Shop</a></li><li><a href="gallery.html">Before &amp; After</a></li></ul></div>
             <div class="footer__col"><h4>Information</h4><ul><li><a href="about.html">About Jeff</a></li><li><a href="contact.html">Contact</a></li></ul></div>
         </div>
@@ -185,10 +183,24 @@
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="../js/main.js"></script>
 <script src="../js/cart.js"></script>
+<script src="../js/machine-db.js"></script>
 <script src="../js/notify.js"></script>
 <script>
 // Contact page assessment gate logic
 document.addEventListener('DOMContentLoaded', function() {
+    // Populate model dropdown from machine database
+    if (typeof getAllModelsFlat === 'function') {
+        var modelSel = document.getElementById('welderModel');
+        if (modelSel) {
+            getAllModelsFlat().forEach(function(m) {
+                var opt = document.createElement('option');
+                opt.value = m.key;
+                opt.textContent = m.label;
+                modelSel.appendChild(opt);
+            });
+        }
+    }
+
     const completed = localStorage.getItem('assessmentCompleted');
     const gate = document.getElementById('assessmentGate');
     const content = document.getElementById('contactContent');
@@ -203,13 +215,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const summary = document.getElementById('assessmentSummary');
             const summaryText = document.getElementById('summaryText');
             summary.style.display = 'block';
-            summaryText.innerHTML = `
-                <strong>Problem:</strong> ${data.description}<br>
-                <strong>Repair Tier:</strong> ${data.tier}/5 &nbsp;|&nbsp;
-                <strong>Difficulty:</strong> ${data.difficulty}/10 &nbsp;|&nbsp;
-                <strong>Your Skill Level:</strong> ${data.skillLevel}<br>
-                <strong>Recommendation:</strong> ${data.recommendation === 'diy' ? 'Do it yourself' : data.recommendation === 'caution' ? 'Proceed with caution' : 'Professional repair recommended'}
-            `;
+            var machineInfo = data.machineString || '';
+            summaryText.innerHTML =
+                (machineInfo ? '<strong>Machine:</strong> ' + machineInfo + '<br>' : '') +
+                '<strong>Problem:</strong> ' + (data.description || '') + '<br>' +
+                '<strong>Repair Tier:</strong> ' + data.tier + '/5 &nbsp;|&nbsp;' +
+                '<strong>Difficulty:</strong> ' + data.difficulty + '/10 &nbsp;|&nbsp;' +
+                '<strong>Your Skill Level:</strong> ' + data.skillLevel + '<br>' +
+                '<strong>Recommendation:</strong> ' + (data.recommendation === 'diy' ? 'Do it yourself' : data.recommendation === 'caution' ? 'Proceed with caution' : 'Professional repair recommended');
 
             // Pre-fill hidden assessment data field
             const dataField = document.getElementById('assessmentDataField');

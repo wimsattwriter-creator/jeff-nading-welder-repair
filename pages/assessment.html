@@ -77,33 +77,54 @@
             <!-- STEP 2: Symptom Selection -->
             <div class="assessment__step" id="step2">
                 <div class="assessment__question">
-                    <h3>Step 2: What Model Welder?</h3>
-                    <div class="assessment__options" id="modelOptions">
-                        <label class="assessment__option" onclick="selectOption(this, 'model')">
-                            <input type="radio" name="model" value="bobcat-225">
-                            <span class="radio-custom"></span>
-                            <span>Miller Bobcat 225 / 225 NT</span>
-                        </label>
-                        <label class="assessment__option" onclick="selectOption(this, 'model')">
-                            <input type="radio" name="model" value="bobcat-250">
-                            <span class="radio-custom"></span>
-                            <span>Miller Bobcat 250</span>
-                        </label>
-                        <label class="assessment__option" onclick="selectOption(this, 'model')">
-                            <input type="radio" name="model" value="trailblazer">
-                            <span class="radio-custom"></span>
-                            <span>Miller Trailblazer</span>
-                        </label>
-                        <label class="assessment__option" onclick="selectOption(this, 'model')">
-                            <input type="radio" name="model" value="hobart">
-                            <span class="radio-custom"></span>
-                            <span>Hobart Champion</span>
-                        </label>
-                        <label class="assessment__option" onclick="selectOption(this, 'model')">
-                            <input type="radio" name="model" value="other">
-                            <span class="radio-custom"></span>
-                            <span>Other engine-driven welder/generator</span>
-                        </label>
+                    <h3>Step 2: Identify Your Machine</h3>
+                    <p class="text-muted" style="margin-bottom:1rem;">The more we know about your machine, the better prepared Jeff will be to help you.</p>
+
+                    <!-- Brand -->
+                    <div class="form-group">
+                        <label for="brandSelect">Brand</label>
+                        <select id="brandSelect" class="assessment__select" onchange="onBrandChange(this.value)">
+                            <option value="">Select brand...</option>
+                        </select>
+                    </div>
+
+                    <!-- Model Line (hidden until brand chosen) -->
+                    <div class="form-group" id="lineGroup" style="display:none;">
+                        <label for="lineSelect">Model Line</label>
+                        <select id="lineSelect" class="assessment__select" onchange="onLineChange(this.value)">
+                            <option value="">Select model line...</option>
+                        </select>
+                    </div>
+
+                    <!-- Specific Model (hidden until line chosen) -->
+                    <div class="form-group" id="modelGroup" style="display:none;">
+                        <label for="modelSelect">Specific Model</label>
+                        <select id="modelSelect" class="assessment__select" onchange="onModelChange(this.value)">
+                            <option value="">Select model...</option>
+                        </select>
+                    </div>
+
+                    <!-- Custom machine text (shown when brand = other) -->
+                    <div class="form-group" id="customMachineGroup" style="display:none;">
+                        <label for="customMachineInput">Describe Your Machine</label>
+                        <input type="text" id="customMachineInput" class="assessment__input" placeholder="Example: older Lincoln SA-200 pipeline welder" oninput="assessmentData.customMachine = this.value;">
+                    </div>
+
+                    <!-- Serial Number (hidden until model chosen or other brand) -->
+                    <div class="form-group" id="serialGroup" style="display:none;">
+                        <label for="serialInput">Serial Number <span class="text-muted" style="font-weight:normal;">(optional but very helpful)</span></label>
+                        <input type="text" id="serialInput" class="assessment__input" placeholder="Example: KH123456" oninput="onSerialInput(this.value)" maxlength="10" style="text-transform:uppercase;">
+                        <p class="text-muted" style="font-size:0.85rem;margin-top:0.25rem;" id="serialHelp"></p>
+                        <p id="serialDecodeResult" style="display:none;color:var(--miller-blue);font-weight:600;margin-top:0.25rem;"></p>
+                    </div>
+
+                    <!-- Engine Type (hidden until model chosen) -->
+                    <div class="form-group" id="engineGroup" style="display:none;">
+                        <label for="engineSelect">Engine Type</label>
+                        <select id="engineSelect" class="assessment__select" onchange="onEngineChange(this.value)">
+                            <option value="">Select engine...</option>
+                        </select>
+                        <p class="text-muted" style="font-size:0.85rem;margin-top:0.25rem;">Not sure? Leave as-is or select "Other / Not Sure".</p>
                     </div>
                 </div>
 
@@ -343,7 +364,7 @@
         <div class="footer__grid">
             <div class="footer__col">
                 <h4>Jeff Nading Welder Repair</h4>
-                <p style="font-size:0.9rem;color:#999;">Expert Miller Bobcat and engine-driven welder/generator repair and restoration.</p>
+                <p style="font-size:0.9rem;color:#999;">Expert engine-driven welder/generator repair and parts.</p>
             </div>
             <div class="footer__col">
                 <h4>Quick Links</h4>
@@ -392,6 +413,7 @@
 
 <script src="../js/main.js"></script>
 <script src="../js/cart.js"></script>
+<script src="../js/machine-db.js"></script>
 <script src="../js/notify.js"></script>
 <script src="../js/assessment.js"></script>
 </body>

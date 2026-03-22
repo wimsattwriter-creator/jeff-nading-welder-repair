@@ -81,7 +81,11 @@ function buildSmsText(data) {
     lines.push('WELDER LEAD:');
     if (data.name) lines.push(data.name);
     if (data.phone) lines.push('Ph: ' + data.phone);
-    if (data.model) lines.push(getModelName(data.model));
+    if (data.machineString) {
+        lines.push(data.machineString);
+    } else if (data.model) {
+        lines.push(getModelName(data.model));
+    }
     if (data.symptom) lines.push(getSymptomName(data.symptom));
     if (data.tier) lines.push('Tier ' + data.tier + '/5');
     if (data.recommendation) lines.push(getRecName(data.recommendation));
@@ -144,6 +148,10 @@ function sendAssessmentToJeff() {
         phone: phoneInput.value.trim(),
         email: emailInput ? emailInput.value.trim() : '',
         model: savedAssessment.model || assessmentData.model || '',
+        machineString: savedAssessment.machineString || '',
+        serialNumber: savedAssessment.serialNumber || assessmentData.serialNumber || '',
+        decodedYear: savedAssessment.decodedYear || assessmentData.decodedYear || '',
+        engine: savedAssessment.engine || assessmentData.engine || '',
         symptom: savedAssessment.symptom || assessmentData.symptom || '',
         description: savedAssessment.description || assessmentData.description || '',
         tier: savedAssessment.tier || assessmentData.repairTier || '',
@@ -180,6 +188,11 @@ function sendAssessmentToJeff() {
 
 // --- Lookup helpers ---
 function getModelName(m) {
+    // Try database lookup first, fall back to static map
+    if (typeof getModelDisplayName === 'function') {
+        var dbName = getModelDisplayName(m);
+        if (dbName && dbName !== m) return dbName;
+    }
     return { 'bobcat-225': 'Bobcat 225', 'bobcat-225nt': 'Bobcat 225NT', 'bobcat-250': 'Bobcat 250',
              'trailblazer': 'Trailblazer', 'hobart': 'Hobart Champion', 'other': 'Other' }[m] || m || '';
 }

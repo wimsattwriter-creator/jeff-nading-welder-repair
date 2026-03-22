@@ -9,7 +9,13 @@
 // --- State ---
 let assessmentData = {
     description: '',
+    brand: '',
+    modelLine: '',
     model: '',
+    customMachine: '',
+    serialNumber: '',
+    decodedYear: '',
+    engine: '',
     symptom: '',
     followUp: {},
     skills: {},
@@ -65,6 +71,232 @@ function selectOption(element, group) {
     element.classList.add('selected');
     element.querySelector('input').checked = true;
     assessmentData[group] = element.querySelector('input').value;
+}
+
+// --- Machine Identification Cascade ---
+
+function initBrandDropdown() {
+    var sel = document.getElementById('brandSelect');
+    if (!sel || typeof MACHINE_DB === 'undefined') return;
+    sel.innerHTML = '<option value="">Select brand...</option>';
+    for (var key in MACHINE_DB.brands) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = MACHINE_DB.brands[key].name;
+        sel.appendChild(opt);
+    }
+    var otherOpt = document.createElement('option');
+    otherOpt.value = 'other';
+    otherOpt.textContent = 'Other / Not Listed';
+    sel.appendChild(otherOpt);
+}
+
+function onBrandChange(brandKey) {
+    assessmentData.brand = brandKey;
+    assessmentData.modelLine = '';
+    assessmentData.model = '';
+    assessmentData.engine = '';
+    assessmentData.serialNumber = '';
+    assessmentData.decodedYear = '';
+    assessmentData.customMachine = '';
+
+    var lineGroup = document.getElementById('lineGroup');
+    var modelGroup = document.getElementById('modelGroup');
+    var serialGroup = document.getElementById('serialGroup');
+    var engineGroup = document.getElementById('engineGroup');
+    var customGroup = document.getElementById('customMachineGroup');
+
+    // Reset downstream
+    lineGroup.style.display = 'none';
+    modelGroup.style.display = 'none';
+    serialGroup.style.display = 'none';
+    engineGroup.style.display = 'none';
+    customGroup.style.display = 'none';
+
+    if (!brandKey) return;
+
+    if (brandKey === 'other') {
+        customGroup.style.display = 'block';
+        serialGroup.style.display = 'block';
+        document.getElementById('serialHelp').textContent = 'Enter the serial number from your machine\'s rating plate if you can find it.';
+        document.getElementById('serialDecodeResult').style.display = 'none';
+        return;
+    }
+
+    var brand = MACHINE_DB.brands[brandKey];
+    if (!brand) return;
+
+    // Populate line dropdown
+    var lineSel = document.getElementById('lineSelect');
+    lineSel.innerHTML = '<option value="">Select model line...</option>';
+    var lineKeys = Object.keys(brand.lines);
+
+    // If only one line, auto-select it
+    if (lineKeys.length === 1) {
+        var opt = document.createElement('option');
+        opt.value = lineKeys[0];
+        opt.textContent = brand.lines[lineKeys[0]].name;
+        opt.selected = true;
+        lineSel.appendChild(opt);
+        lineGroup.style.display = 'block';
+        onLineChange(lineKeys[0]);
+    } else {
+        for (var i = 0; i < lineKeys.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = lineKeys[i];
+            opt.textContent = brand.lines[lineKeys[i]].name;
+            lineSel.appendChild(opt);
+        }
+        lineGroup.style.display = 'block';
+    }
+}
+
+function onLineChange(lineKey) {
+    assessmentData.modelLine = lineKey;
+    assessmentData.model = '';
+    assessmentData.engine = '';
+
+    var modelGroup = document.getElementById('modelGroup');
+    var serialGroup = document.getElementById('serialGroup');
+    var engineGroup = document.getElementById('engineGroup');
+    modelGroup.style.display = 'none';
+    serialGroup.style.display = 'none';
+    engineGroup.style.display = 'none';
+
+    if (!lineKey) return;
+
+    var brand = MACHINE_DB.brands[assessmentData.brand];
+    if (!brand || !brand.lines[lineKey]) return;
+    var line = brand.lines[lineKey];
+
+    // Populate model dropdown
+    var modelSel = document.getElementById('modelSelect');
+    modelSel.innerHTML = '<option value="">Select model...</option>';
+    for (var key in line.models) {
+        var opt = document.createElement('option');
+        opt.value = key;
+        opt.textContent = line.models[key].name;
+        if (line.models[key].notes) {
+            opt.title = line.models[key].notes;
+        }
+        modelSel.appendChild(opt);
+    }
+    var otherOpt = document.createElement('option');
+    otherOpt.value = 'other';
+    otherOpt.textContent = 'Not sure / Other ' + line.name;
+    modelSel.appendChild(otherOpt);
+    modelGroup.style.display = 'block';
+}
+
+function onModelChange(modelKey) {
+    assessmentData.model = modelKey;
+    assessmentData.engine = '';
+
+    var serialGroup = document.getElementById('serialGroup');
+    var engineGroup = document.getElementById('engineGroup');
+    var serialHelp = document.getElementById('serialHelp');
+    var serialResult = document.getElementById('serialDecodeResult');
+
+    // Show serial number field
+    serialGroup.style.display = 'block';
+    serialResult.style.display = 'none';
+    document.getElementById('serialInput').value = '';
+    assessmentData.serialNumber = '';
+    assessmentData.decodedYear = '';
+
+    var brand = MACHINE_DB.brands[assessmentData.brand];
+    if (brand && brand.hasSerialDecode) {
+        serialHelp.innerHTML = brand.serialHelpText +
+            ' <a href="' + brand.serialHelpUrl + '" target="_blank" rel="noopener" style="color:var(--miller-blue);">See Miller\'s serial number guide &#8599;</a>';
+    } else if (brand) {
+        serialHelp.textContent = brand.serialHelpText;
+    } else {
+        serialHelp.textContent = 'Enter the serial number from your machine\'s rating plate.';
+    }
+
+    // Populate engine dropdown
+    if (modelKey === 'other' || !modelKey) {
+        // Show all engines for this brand's line
+        populateEngineDropdown(null);
+        engineGroup.style.display = 'block';
+        return;
+    }
+
+    var line = brand.lines[assessmentData.modelLine];
+    if (line && line.models[modelKey]) {
+        var modelEngines = line.models[modelKey].engines;
+        populateEngineDropdown(modelEngines);
+        engineGroup.style.display = 'block';
+
+        // Auto-select if only one engine option
+        if (modelEngines.length === 1) {
+            var engineSel = document.getElementById('engineSelect');
+            engineSel.value = modelEngines[0];
+            assessmentData.engine = modelEngines[0];
+        }
+    }
+}
+
+function populateEngineDropdown(engineKeys) {
+    var sel = document.getElementById('engineSelect');
+    sel.innerHTML = '<option value="">Select engine...</option>';
+
+    if (engineKeys && engineKeys.length > 0) {
+        // Show specific engines for this model
+        for (var i = 0; i < engineKeys.length; i++) {
+            var eng = MACHINE_DB.engines[engineKeys[i]];
+            if (eng) {
+                var opt = document.createElement('option');
+                opt.value = engineKeys[i];
+                opt.textContent = eng.name + (eng.hp ? ' (' + eng.hp + ' horsepower)' : '');
+                sel.appendChild(opt);
+            }
+        }
+    } else {
+        // Show all engines
+        for (var key in MACHINE_DB.engines) {
+            if (key === 'other') continue;
+            var eng = MACHINE_DB.engines[key];
+            var opt = document.createElement('option');
+            opt.value = key;
+            opt.textContent = eng.name + (eng.hp ? ' (' + eng.hp + ' horsepower)' : '');
+            sel.appendChild(opt);
+        }
+    }
+
+    // Always add "Other / Not Sure"
+    var otherOpt = document.createElement('option');
+    otherOpt.value = 'other';
+    otherOpt.textContent = 'Other / Not Sure';
+    sel.appendChild(otherOpt);
+}
+
+function onSerialInput(value) {
+    assessmentData.serialNumber = value.trim().toUpperCase();
+    var resultEl = document.getElementById('serialDecodeResult');
+
+    var brand = MACHINE_DB.brands[assessmentData.brand];
+    if (brand && brand.hasSerialDecode && value.trim().length >= 8) {
+        var decoded = decodeMillerSerial(value);
+        if (decoded) {
+            assessmentData.decodedYear = decoded.year;
+            resultEl.textContent = 'Manufactured: ' + decoded.year;
+            resultEl.style.display = 'block';
+            resultEl.style.color = 'var(--miller-blue)';
+        } else {
+            assessmentData.decodedYear = '';
+            resultEl.textContent = 'Could not decode — check your serial number format (2 letters + 6 digits).';
+            resultEl.style.display = 'block';
+            resultEl.style.color = '#c0392b';
+        }
+    } else {
+        assessmentData.decodedYear = '';
+        resultEl.style.display = 'none';
+    }
+}
+
+function onEngineChange(engineKey) {
+    assessmentData.engine = engineKey;
 }
 
 function selectSkill(element, skillName, score) {
@@ -643,9 +875,22 @@ function generateResults() {
 
     // Save assessment completion to localStorage
     localStorage.setItem('assessmentCompleted', 'true');
+    // Build machine string for display
+    var machineString = '';
+    if (typeof buildMachineString === 'function') {
+        machineString = buildMachineString(assessmentData);
+    }
+
     localStorage.setItem('assessmentData', JSON.stringify({
-        symptom: assessmentData.symptom,
+        brand: assessmentData.brand,
+        modelLine: assessmentData.modelLine,
         model: assessmentData.model,
+        customMachine: assessmentData.customMachine || '',
+        serialNumber: assessmentData.serialNumber || '',
+        decodedYear: assessmentData.decodedYear || '',
+        engine: assessmentData.engine || '',
+        machineString: machineString,
+        symptom: assessmentData.symptom,
         tier: repair.tier,
         difficulty: repair.difficulty,
         description: repair.description,
@@ -676,6 +921,9 @@ function generateResults() {
     }
 
     const html = `
+        <!-- Machine Identification -->
+        ${machineString ? '<div style="background:#e8f1fc;border:1px solid var(--miller-blue);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;"><strong style="color:var(--miller-blue);">&#128295; Machine:</strong> ' + machineString + '</div>' : ''}
+
         <!-- Difficulty Assessment -->
         <div class="assessment__question">
             <h3>Your Repair Assessment</h3>
@@ -783,7 +1031,13 @@ function generateResults() {
 function resetAssessment() {
     assessmentData = {
         description: '',
+        brand: '',
+        modelLine: '',
         model: '',
+        customMachine: '',
+        serialNumber: '',
+        decodedYear: '',
+        engine: '',
         symptom: '',
         followUp: {},
         skills: {},
@@ -798,8 +1052,31 @@ function resetAssessment() {
     document.querySelectorAll('.assessment__option input').forEach(inp => inp.checked = false);
     document.getElementById('problemDescription').value = '';
 
+    // Reset machine identification dropdowns
+    var brandSel = document.getElementById('brandSelect');
+    if (brandSel) brandSel.value = '';
+    var lineGroup = document.getElementById('lineGroup');
+    if (lineGroup) lineGroup.style.display = 'none';
+    var modelGroup = document.getElementById('modelGroup');
+    if (modelGroup) modelGroup.style.display = 'none';
+    var serialGroup = document.getElementById('serialGroup');
+    if (serialGroup) serialGroup.style.display = 'none';
+    var engineGroup = document.getElementById('engineGroup');
+    if (engineGroup) engineGroup.style.display = 'none';
+    var customGroup = document.getElementById('customMachineGroup');
+    if (customGroup) customGroup.style.display = 'none';
+    var serialInput = document.getElementById('serialInput');
+    if (serialInput) serialInput.value = '';
+    var serialResult = document.getElementById('serialDecodeResult');
+    if (serialResult) serialResult.style.display = 'none';
+
     goToStep(1);
 }
+
+// --- Initialize brand dropdown on page load ---
+document.addEventListener('DOMContentLoaded', function() {
+    initBrandDropdown();
+});
 
 // --- Responsive result grid ---
 const style = document.createElement('style');

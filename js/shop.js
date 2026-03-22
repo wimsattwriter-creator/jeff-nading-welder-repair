@@ -50,12 +50,12 @@ const products = [
         image: '../images/fuel-system/fuel-pump-filter-lines.jpeg'
     },
     {
-        id: 'stator-insulation-kit',
-        name: 'Stator Slot Insulation Kit',
-        description: 'Pre-cut slot insulation paper and wedge material for stator rewinding. Professional-grade Nomex material rated for continuous high temperature.',
+        id: 'voltage-regulator',
+        name: 'Voltage Regulator / Rectifier',
+        description: 'Replacement voltage regulator for engine-driven welder/generators. Regulates charging output to prevent battery overcharge and electrical damage.',
         price: 55.00,
         category: 'electrical',
-        image: '../images/stator/bare-lamination-numbered-slots.jpeg'
+        image: '../images/electronics/blue-capacitor-bank.jpeg'
     },
     {
         id: 'cylinder-head-gasket',

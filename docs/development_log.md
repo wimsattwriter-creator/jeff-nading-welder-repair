@@ -2,6 +2,32 @@
 
 ---
 
+## Session 3 — 2026-03-22
+
+### Business Direction Update (Human insight)
+
+User directed three key changes to the website's positioning:
+
+1. **Remove "Bobcat" from titles/branding only** — Singling out one model in the title limits the business scope. Bobcat references in repair sections, product descriptions, and model lists are fine — Jeff does repair those, just not exclusively.
+2. **Remove stator rewinding as a featured service** — Takes too much time; not aligned with the focus on immediate repairs.
+3. **Remove complete restorations as a featured service** — Same reasoning; the business focus is on immediate repairs and parts availability, not long-term restoration projects.
+
+**New business focus:** Immediate repairs and parts availability.
+
+### Machine Identification Database (Human insight — 2026-03-22)
+
+User wants to build a machine/engine identification database so that:
+1. Customer enters serial number and/or engine type
+2. System looks up the machine and auto-populates model details
+3. All relevant machine info gets included in the text notification to Jeff
+4. Jeff receives a complete picture of the machine before the customer even calls
+
+**User's vision:** "look at all the models available and build a plan for identifying the machine and engine type database so the customer can enter the serial number and the engine type, then all the other info we could add to the text from the database that we make or can find."
+
+This is a significant feature — transforms the assessment from generic symptom reporting into machine-specific diagnostics. Jeff would know the exact machine, its engine, common failure points, and parts availability before picking up the phone. Customers need their welders running again quickly, and parts sourcing is a major pain point in this market.
+
+---
+
 ## Session 1 — 2026-03-20
 
 ### User Vision (logged from initial conversation)
