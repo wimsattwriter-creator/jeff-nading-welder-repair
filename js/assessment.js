@@ -823,7 +823,7 @@ function calculateRepairTier() {
         default:
             tier = 3; difficulty = 5;
             description = 'Unable to determine — please provide more details.';
-            whatsInvolved = 'Based on the information provided, we can\'t narrow down the exact issue. Consider calling Jeff directly for a phone consultation.';
+            whatsInvolved = 'Based on the information provided, we can\'t narrow down the exact issue. Send your details to Jeff using the form below and he\'ll follow up.';
             photoSrc = '../images/complete-units/bobcat-modern-blue-01.jpeg';
             photoAlt = 'Miller Bobcat welder';
     }
@@ -986,7 +986,7 @@ function generateResults() {
         <!-- Send to Jeff Form -->
         <div class="assessment__question" style="margin-top:1.5rem;">
             <h3>&#128233; Send Your Assessment to Jeff</h3>
-            <p class="text-muted">Enter your name and phone number. Jeff will receive a text message with your problem details and machine info — so he's prepared when you call.</p>
+            <p class="text-muted">Enter your name and phone number. Jeff will receive your problem details and machine info and reach out to you.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;" class="notify-grid">
                 <div class="form-group" style="margin:0;">
                     <label for="customerName">Your Name</label>
@@ -1006,12 +1006,6 @@ function generateResults() {
             </button>
             <div id="sendConfirmation" style="display:none;margin-top:1rem;padding:1rem;background:#f0fff4;border:1px solid #28A745;border-radius:8px;text-align:center;">
                 <strong>&#9989; Sent!</strong> Jeff has received your assessment details via text and email. He'll reach out soon.
-                <div style="margin-top:1rem;">
-                    <div class="contact-line" style="justify-content:center;border:none;padding:0.25rem;">
-                        <span class="icon">&#128222;</span>
-                        <span>Or call/text Jeff directly: <strong>(830) 660-7795</strong></span>
-                    </div>
-                </div>
             </div>
         </div>
     `;

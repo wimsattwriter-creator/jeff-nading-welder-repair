@@ -72,32 +72,14 @@
                     </div>
 
                     <div style="margin-bottom:2rem;">
-                        <div class="contact-line" style="padding:1rem 0;border-bottom:1px solid var(--light-gray);font-size:1.1rem;">
-                            <span class="icon" style="font-size:1.5rem;">&#128222;</span>
-                            <div>
-                                <strong>Phone / Text</strong><br>
-                                <a href="tel:+18306607795" style="font-size:1.25rem;font-weight:700;">(830) 660-7795</a>
-                            </div>
-                        </div>
-                        <div class="contact-line" style="padding:1rem 0;border-bottom:1px solid var(--light-gray);font-size:1.1rem;">
-                            <span class="icon" style="font-size:1.5rem;">&#9993;</span>
-                            <div>
-                                <strong>Email</strong><br>
-                                <a href="mailto:jlnading@gmail.com" style="font-size:1.1rem;">jlnading@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-line" style="padding:1rem 0;font-size:1.1rem;">
-                            <span class="icon" style="font-size:1.5rem;">&#128205;</span>
-                            <div>
-                                <strong>Location</strong><br>
-                                <span class="text-muted">Contact for shop address and hours</span>
-                            </div>
+                        <div style="padding:1rem 0;font-size:1.1rem;">
+                            <p>Fill out the form below or complete a <a href="assessment.html"><strong>Repair Assessment</strong></a> — your details go directly to Jeff and he'll get back to you.</p>
                         </div>
                     </div>
 
                     <div style="background:var(--off-white);border-radius:8px;padding:1.25rem;">
-                        <h4>When You Call or Email</h4>
-                        <p class="text-muted" style="font-size:0.9rem;">Mention that you completed the online assessment — Jeff will already have context about your problem. If you can, have your welder's model number and serial number ready.</p>
+                        <h4>What Happens Next</h4>
+                        <p class="text-muted" style="font-size:0.9rem;">Jeff receives your message directly and will reach out to you. If you completed the online assessment, he'll already have context about your problem.</p>
                     </div>
                 </div>
 
@@ -115,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(830) 660-7795">
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
                         </div>
                         <div class="form-group">
                             <label for="welderModel">Welder Model (if known)</label>
@@ -161,8 +143,7 @@
     <div class="dont-panic__panel-header"><h3>We've Seen It All — We Can Help</h3><button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button></div>
     <div class="dont-panic__panel-body">
         <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
-        <div class="contact-line"><span class="icon">&#128222;</span><span>Call or Text: <strong>(830) 660-7795</strong></span></div>
-        <div class="contact-line"><span class="icon">&#9993;</span><span>Email: <strong>jlnading@gmail.com</strong></span></div>
+        <div class="dont-panic__assessment-note"><strong>Here's how to reach us:</strong> Complete our free <a href="assessment.html">Repair Assessment</a> — it takes 2 minutes and sends your problem details directly to Jeff. He'll get back to you.</div>
         <div class="dont-panic__assessment-note" id="panicAssessmentNote"><strong>Save time for both of us:</strong> Complete our free <a href="assessment.html">Repair Assessment</a> first.</div>
     </div>
 </div>
@@ -256,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             // In production, this would submit to Formspree or similar.
             // For now, show confirmation.
-            alert('Message sent! Jeff will review your assessment results and get back to you soon.\n\nFor urgent issues, call or text directly: (830) 660-7795');
+            alert('Message sent! Jeff will review your details and get back to you soon.');
             form.reset();
         });
     }
