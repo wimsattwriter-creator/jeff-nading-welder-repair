@@ -725,22 +725,46 @@ function generateResults() {
             <p style="max-width:600px;margin:1rem auto;">${recMessage}</p>
             ${recommendation !== 'diy' ? `
                 <div style="margin-top:2rem;">
-                    <p><strong>Ready to get this fixed?</strong></p>
-                    <div class="contact-line" style="justify-content:center;border:none;padding:0.5rem;">
-                        <span class="icon">&#128222;</span>
-                        <span>Call or Text: <strong>(830) 660-7795</strong></span>
-                    </div>
-                    <div class="contact-line" style="justify-content:center;border:none;padding:0.5rem;">
-                        <span class="icon">&#9993;</span>
-                        <span>Email: <strong>jlnading@gmail.com</strong></span>
-                    </div>
-                    <p class="text-muted" style="font-size:0.85rem;margin-top:0.5rem;">Jeff now has context about your problem from this assessment.</p>
+                    <p><strong>Ready to get this fixed? Send your info to Jeff now:</strong></p>
                 </div>
             ` : `
                 <div style="margin-top:1.5rem;">
                     <p class="text-muted">Need parts? Check our <a href="shop.html">Shop</a> for quality replacement components.</p>
+                    <p style="margin-top:1rem;"><strong>Want Jeff to know about your situation anyway?</strong></p>
                 </div>
             `}
+        </div>
+
+        <!-- Send to Jeff Form -->
+        <div class="assessment__question" style="margin-top:1.5rem;">
+            <h3>&#128233; Send Your Assessment to Jeff</h3>
+            <p class="text-muted">Enter your name and phone number. Jeff will receive a text message with your problem details and machine info — so he's prepared when you call.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;" class="notify-grid">
+                <div class="form-group" style="margin:0;">
+                    <label for="customerName">Your Name</label>
+                    <input type="text" id="customerName" placeholder="John Smith" required>
+                </div>
+                <div class="form-group" style="margin:0;">
+                    <label for="customerPhone">Phone Number</label>
+                    <input type="tel" id="customerPhone" placeholder="(555) 123-4567" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Email (optional)</label>
+                <input type="email" id="customerEmail" placeholder="john@example.com">
+            </div>
+            <button class="btn btn--primary btn--large" style="width:100%;" id="sendToJeffBtn" onclick="sendAssessmentToJeff()">
+                &#128234; Send My Info to Jeff
+            </button>
+            <div id="sendConfirmation" style="display:none;margin-top:1rem;padding:1rem;background:#f0fff4;border:1px solid #28A745;border-radius:8px;text-align:center;">
+                <strong>&#9989; Sent!</strong> Jeff has received your assessment details via text and email. He'll reach out soon.
+                <div style="margin-top:1rem;">
+                    <div class="contact-line" style="justify-content:center;border:none;padding:0.25rem;">
+                        <span class="icon">&#128222;</span>
+                        <span>Or call/text Jeff directly: <strong>(830) 660-7795</strong></span>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 

@@ -1475,6 +1475,10 @@ p { margin-bottom: 1rem; }
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
     }
+
+    .notify-grid {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1492,5 +1496,9 @@ p { margin-bottom: 1rem; }
 
     .product-grid {
         grid-template-columns: 1fr;
+    }
+
+    .notify-grid {
+        grid-template-columns: 1fr !important;
     }
 }
