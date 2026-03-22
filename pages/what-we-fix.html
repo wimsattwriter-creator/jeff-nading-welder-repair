@@ -42,17 +42,16 @@
     <div class="container">
         <div class="section-header section-header--light">
             <h1>What We Fix</h1>
-            <p>From routine maintenance to full restorations — real photos from our shop showing exactly what's involved in each type of repair.</p>
+            <p>From routine maintenance to the repairs others won't touch — real photos from our shop showing exactly what's involved.</p>
         </div>
         <div class="gallery-filters">
             <button class="gallery-filter-btn active" data-category="all" onclick="filterGallery('all')">All Categories</button>
             <button class="gallery-filter-btn" data-category="engine" onclick="filterGallery('engine')">Engine</button>
-            <button class="gallery-filter-btn" data-category="stator" onclick="filterGallery('stator')">Stator / Generator</button>
+            <button class="gallery-filter-btn" data-category="alternator" onclick="filterGallery('alternator')">Flywheel &amp; Alternator</button>
             <button class="gallery-filter-btn" data-category="transformer" onclick="filterGallery('transformer')">Transformer</button>
             <button class="gallery-filter-btn" data-category="electronics" onclick="filterGallery('electronics')">Electronics</button>
             <button class="gallery-filter-btn" data-category="wiring" onclick="filterGallery('wiring')">Wiring</button>
             <button class="gallery-filter-btn" data-category="fuel" onclick="filterGallery('fuel')">Fuel System</button>
-            <button class="gallery-filter-btn" data-category="body" onclick="filterGallery('body')">Body &amp; Frame</button>
             <button class="gallery-filter-btn" data-category="diagnostic" onclick="filterGallery('diagnostic')">Diagnostics</button>
         </div>
     </div>
@@ -122,52 +121,31 @@
             </div>
         </div>
 
-        <!-- STATOR / GENERATOR -->
-        <div id="stator-section" style="margin-bottom:4rem;">
+        <!-- FLYWHEEL, MAGNETS & ALTERNATOR -->
+        <div id="alternator-section" style="margin-bottom:4rem;">
             <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
                 <div>
-                    <h2>Stator &amp; Generator Components</h2>
-                    <p class="text-muted">Generator testing, rotor work, flywheel and charging system repairs</p>
+                    <h2>Flywheel, Magnets &amp; Alternator</h2>
+                    <p class="text-muted">Flywheel magnet replacement, alternator repair, charging system diagnostics</p>
                 </div>
-                <span class="tier-badge tier-badge--5">Tier 4-5 Difficulty</span>
+                <span class="tier-badge tier-badge--4">Tier 3-4 Difficulty</span>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Bare stator lamination stack with numbered winding slots — ready for hand rewinding')">
-                    <img src="../images/stator/bare-lamination-numbered-slots.jpeg" alt="Bare stator lamination stack with numbered slots" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Bare Lamination Stack</h4>
-                        <p>Numbered for precision rewinding</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Stator being hand-rewound with copper wire through each slot')">
-                    <img src="../images/stator/stator-being-rewound.jpeg" alt="Stator being hand-wound with copper wire" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Hand Rewinding</h4>
-                        <p>Copper wire through every slot</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Completed stator rewind — all windings in place, ready for testing')">
-                    <img src="../images/stator/completed-rewind-top-view.jpeg" alt="Completed stator rewind viewed from above" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Completed Rewind</h4>
-                        <p>Every winding in place</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Flywheel with charging coils — the charging system that keeps the battery alive')">
-                    <img src="../images/stator/flywheel-charging-coils.jpeg" alt="Flywheel with stator charging coils" loading="lazy">
+                <div class="gallery-item" data-category="alternator" onclick="openLightbox(this.querySelector('img').src, 'Flywheel with charging coils — the charging system that keeps the battery alive')">
+                    <img src="../images/stator/flywheel-charging-coils.jpeg" alt="Flywheel with charging coils" loading="lazy">
                     <div class="gallery-item__overlay">
                         <h4>Flywheel Charging System</h4>
-                        <p>Powers the entire electrical system</p>
+                        <p>Powers the electrical system</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Slip rings and commutator on rotor shaft — critical contact surfaces')">
+                <div class="gallery-item" data-category="alternator" onclick="openLightbox(this.querySelector('img').src, 'Slip rings and commutator on rotor shaft — critical contact surfaces')">
                     <img src="../images/stator/slip-rings-commutator.jpeg" alt="Slip rings and commutator on rotor shaft" loading="lazy">
                     <div class="gallery-item__overlay">
-                        <h4>Slip Rings</h4>
+                        <h4>Slip Rings &amp; Commutator</h4>
                         <p>Critical contact surfaces</p>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="stator" onclick="openLightbox(this.querySelector('img').src, 'Four flywheels on workbench — inventory for various Miller models')">
+                <div class="gallery-item" data-category="alternator" onclick="openLightbox(this.querySelector('img').src, 'Four flywheels on workbench — inventory for various models')">
                     <img src="../images/stator/four-flywheels-inventory.jpeg" alt="Four flywheels on workbench" loading="lazy">
                     <div class="gallery-item__overlay">
                         <h4>Flywheel Inventory</h4>
@@ -177,8 +155,8 @@
             </div>
             <div style="background:var(--off-white);border-radius:8px;padding:1.5rem;margin-top:1.5rem;">
                 <h4>What's Involved</h4>
-                <p>The stator is the heart of your welder's power generation. When it fails, you get no welding output and no auxiliary power. Rewinding a stator means removing every coil of copper wire from the lamination stack, insulating each slot, and hand-winding new copper — hundreds of turns through dozens of slots, in the exact pattern the manufacturer specified. One wrong connection and the entire unit is dead.</p>
-                <p><strong>Common reasons for stator failure:</strong> Insulation breakdown from heat, moisture intrusion, overloading, age, and vibration-related wire fatigue.</p>
+                <p>Flywheel magnets weaken or break over time, causing poor charging, no-start conditions, and erratic electrical behavior. Alternator and charging system repairs require pulling the flywheel, inspecting magnets, testing coil output, and replacing worn components. These are immediate repairs that get your machine back to work.</p>
+                <p><strong>Common failures:</strong> Weak or broken flywheel magnets, worn slip rings, failed charging coils, bad voltage regulator.</p>
             </div>
         </div>
 
@@ -351,40 +329,6 @@
                     <div class="gallery-item__overlay">
                         <h4>Electronic Fuel Injection</h4>
                         <p>Computer-controlled fuel delivery</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BODY & FRAME -->
-        <div id="body-section" style="margin-bottom:4rem;">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
-                <div>
-                    <h2>Body &amp; Frame</h2>
-                    <p class="text-muted">Panel replacement, painting, custom fabrication, frame repair</p>
-                </div>
-                <span class="tier-badge tier-badge--3">Tier 2-4 Difficulty</span>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Body panels freshly painted in Miller blue, drying in greenhouse')">
-                    <img src="../images/body/panel-miller-blue-greenhouse-01.jpeg" alt="Body panels painted Miller blue drying" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Fresh Paint</h4>
-                        <p>Miller blue restoration</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Custom fabricated sheet metal bracket — precision metalwork')">
-                    <img src="../images/body/custom-fabricated-sheet-metal.jpeg" alt="Custom fabricated sheet metal bracket" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Custom Fabrication</h4>
-                        <p>When parts don't exist, we make them</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="body" onclick="openLightbox(this.querySelector('img').src, 'Frame stripped to bare metal for complete restoration')">
-                    <img src="../images/body/frame-stripped-fan-housing.jpeg" alt="Frame stripped for restoration" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <h4>Frame-Off Restoration</h4>
-                        <p>Stripped to bare metal</p>
                     </div>
                 </div>
             </div>
