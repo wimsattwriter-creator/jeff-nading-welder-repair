@@ -28,13 +28,9 @@ const EMAILJS_PUBLIC_KEY = 'vwII2XZxByp5fEL9a';
 const EMAILJS_SERVICE_ID = 'service_obmx5jt';
 const EMAILJS_TEMPLATE_ID = 'template_4f2ydsh';
 
-// Send to Jeff's Gmail until we know his carrier for SMS gateway
-// Once carrier is known, replace with single gateway like:
-//   '8306607795@tmomail.net' (T-Mobile)
-//   '8306607795@txt.att.net' (AT&T)
-//   '8306607795@vtext.com' (Verizon)
+// Jeff's carrier: AT&T — one text per submission, 200/month free
 const SMS_GATEWAYS = [
-    'jlnading@gmail.com'
+    '8306607795@txt.att.net'
 ];
 
 // --- Initialize EmailJS ---
