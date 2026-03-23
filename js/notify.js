@@ -52,15 +52,21 @@ function sendTextToJeff(customerData) {
         return Promise.resolve();
     }
 
-    // Send to every carrier gateway — only the right one delivers
+    // Send to AT&T SMS gateway
     const promises = SMS_GATEWAYS.map(gateway => {
         return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
             to_email: gateway,
             subject: 'New welder inquiry',
-            message: smsText
+            message: smsText,
+            customer_name: customerData.name || '',
+            customer_phone: customerData.phone || '',
+            machine: customerData.machineString || '',
+            serial: customerData.serialNumber || '',
+            engine: customerData.engine || '',
+            symptom: customerData.description || '',
+            tier: customerData.tier ? 'Tier ' + customerData.tier + '/5' : ''
         }).catch(function(err) {
-            // Silently fail — most gateways will reject since they're wrong carrier
-            console.log('Gateway ' + gateway + ' failed (expected):', err);
+            console.log('Gateway ' + gateway + ' failed:', err);
         });
     });
 
