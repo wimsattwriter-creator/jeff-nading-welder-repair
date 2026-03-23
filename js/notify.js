@@ -24,9 +24,9 @@
    ============================================ */
 
 // --- CONFIGURATION — Replace these three values ---
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = 'vwII2XZxByp5fEL9a';
+const EMAILJS_SERVICE_ID = 'service_obmx5jt';
+const EMAILJS_TEMPLATE_ID = 'template_4f2ydsh';
 
 // Jeff's phone number and all carrier SMS gateways
 // Sending to all gateways — only Jeff's actual carrier will deliver
