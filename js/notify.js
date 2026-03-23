@@ -28,17 +28,13 @@ const EMAILJS_PUBLIC_KEY = 'vwII2XZxByp5fEL9a';
 const EMAILJS_SERVICE_ID = 'service_obmx5jt';
 const EMAILJS_TEMPLATE_ID = 'template_4f2ydsh';
 
-// Jeff's phone number and all carrier SMS gateways
-// Sending to all gateways — only Jeff's actual carrier will deliver
+// Send to Jeff's Gmail until we know his carrier for SMS gateway
+// Once carrier is known, replace with single gateway like:
+//   '8306607795@tmomail.net' (T-Mobile)
+//   '8306607795@txt.att.net' (AT&T)
+//   '8306607795@vtext.com' (Verizon)
 const SMS_GATEWAYS = [
-    '8306607795@txt.att.net',             // AT&T
-    '8306607795@tmomail.net',             // T-Mobile
-    '8306607795@vtext.com',               // Verizon
-    '8306607795@sms.cricketwireless.net',  // Cricket
-    '8306607795@messaging.sprintpcs.com',  // Sprint
-    '8306607795@email.uscc.net',           // US Cellular
-    '8306607795@sms.myboostmobile.com',    // Boost Mobile
-    '8306607795@mymetropcs.com'            // Metro PCS
+    'jlnading@gmail.com'
 ];
 
 // --- Initialize EmailJS ---
