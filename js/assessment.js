@@ -32,10 +32,31 @@ function goToStep(stepNum) {
     const currentStepNum = parseInt(currentStep.id.replace('step', ''));
 
     if (stepNum > currentStepNum) {
+        // Step 1: Require problem description
         if (currentStepNum === 1) {
             assessmentData.description = document.getElementById('problemDescription').value;
+            if (!assessmentData.description.trim()) {
+                alert('Please describe the problem before continuing.');
+                document.getElementById('problemDescription').focus();
+                return;
+            }
         }
+        // Step 2: Require machine identification and symptom
         if (currentStepNum === 2) {
+            if (!assessmentData.brand) {
+                alert('Please select a brand to continue.');
+                document.getElementById('brandSelect').focus();
+                return;
+            }
+            if (assessmentData.brand !== 'other' && !assessmentData.model) {
+                alert('Please select a model to continue.');
+                return;
+            }
+            if (assessmentData.brand === 'other' && !assessmentData.customMachine.trim()) {
+                alert('Please describe your machine to continue.');
+                document.getElementById('customMachineInput').focus();
+                return;
+            }
             if (!assessmentData.symptom) {
                 alert('Please select a symptom to continue.');
                 return;
@@ -868,6 +889,14 @@ function getRecommendation(tier, skillLevel) {
 
 // --- Generate Results ---
 function generateResults() {
+    // Require all 7 skill questions answered
+    const requiredSkills = ['engine-exp', 'multimeter', 'electrical', 'hoist', 'diagrams', 'welder-exp', 'tools'];
+    const missing = requiredSkills.filter(s => assessmentData.skills[s] === undefined);
+    if (missing.length > 0) {
+        alert('Please answer all skill level questions before continuing.');
+        return;
+    }
+
     const repair = calculateRepairTier();
     const skill = calculateSkillScore();
     const recommendation = getRecommendation(repair.tier, skill.level);
