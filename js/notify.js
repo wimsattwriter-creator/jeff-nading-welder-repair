@@ -51,7 +51,7 @@ const EMAILJS_TEMPLATE_ID = 'template_4f2ydsh';   // UPDATE: use a template that
 const JEFF_EMAIL = 'jlnading@gmail.com';           // Real email — works reliably
 
 // Paste your Make.com webhook URL here after setup:
-const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/1y0l421shzldwddbnohdk1dgoa9rl3th';  // e.g. https://hook.us1.make.com/abc123xyz
+const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/3oy1e639lmnmv8qgp1i6wg5j58fpga77';  // e.g. https://hook.us1.make.com/abc123xyz
 
 // ─────────────────────────────────────────────────────────────────────────────
 
