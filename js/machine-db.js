@@ -78,6 +78,12 @@ const MACHINE_DB = {
                             years: '2000s-present',
                             notes: 'Liquid propane fuel variant'
                         },
+                        'bobcat-260': {
+                            name: 'Bobcat 260',
+                            engines: ['kohler-ch740', 'kohler-ech749'],
+                            years: '2020s-present',
+                            notes: 'Current production, 260A DC'
+                        },
                         'bobcat-265': {
                             name: 'Bobcat 265',
                             engines: ['kohler-ch740', 'kohler-ech749'],
@@ -160,6 +166,12 @@ const MACHINE_DB = {
                             years: '2010s-present',
                             notes: 'Briggs & Stratton Intek engine, 4500W, 145A'
                         },
+                        'champion-10000': {
+                            name: 'Champion 10,000',
+                            engines: ['briggs-vanguard-23', 'kohler-ch730'],
+                            years: '2000s-present',
+                            notes: '10,000 watt generator, 225A welder'
+                        },
                         'champion-elite-225': {
                             name: 'Champion Elite 225',
                             engines: ['briggs-vanguard-23'],
@@ -178,6 +190,18 @@ const MACHINE_DB = {
                 ranger: {
                     name: 'Ranger',
                     models: {
+                        'ranger-8': {
+                            name: 'Ranger 8',
+                            engines: ['onan-p220', 'onan-p224'],
+                            years: '1980s-1990s',
+                            notes: 'Older model with Onan Performer engine, 225A'
+                        },
+                        'ranger-9': {
+                            name: 'Ranger 9',
+                            engines: ['onan-p224', 'kohler-ch25'],
+                            years: '1990s-2000s',
+                            notes: '250A, Onan or Kohler engine depending on year'
+                        },
                         'ranger-225': {
                             name: 'Ranger 225',
                             engines: ['kohler-ch730'],
@@ -201,6 +225,12 @@ const MACHINE_DB = {
                             engines: ['kohler-ech749'],
                             years: '2020s-present',
                             notes: 'Electronic fuel injection variant'
+                        },
+                        'ranger-330mpx': {
+                            name: 'Ranger 330MPX',
+                            engines: ['kohler-ch750'],
+                            years: '2020s-present',
+                            notes: 'Multi-process, 330A, 12kW'
                         }
                     }
                 }
