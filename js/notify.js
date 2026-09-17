@@ -78,7 +78,18 @@ function sendEmailTous(customerData, recipientEmail) {
     return emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
         to_email: recipientEmail,
         subject:  subject,
-        message:  body
+        message:  body,
+        // Individual fields for templates that don't use the {{message}} block:
+        customer_name:    customerData.name,
+        customer_phone:    customerData.phone,
+        customer_email:    customerData.email,
+        machine:           customerData.machineString || customerData.model,
+        serial:            customerData.serialNumber,
+        engine:            customerData.engine,
+        symptom:           getSymptomName(customerData.symptom),
+        tier:              customerData.tier,
+        recommendation:    getRecName(customerData.recommendation),
+        description:       customerData.description
     }).catch(function(err) {
         console.warn('Email send failed for ' + recipientEmail + ':', err);
     });
