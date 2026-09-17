@@ -118,22 +118,25 @@ function sendSmsViaWebhook(customerData) {
 
     const smsText = buildSmsText(customerData);
 
-    // POST JSON to Make.com webhook — no credentials in client code
+    // POST JSON to Make.com webhook
     return fetch(MAKE_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+            // The 'message' field is the pre-formatted summary
             message:     smsText,
-            name:        customerData.name         || '',
-            phone:       customerData.phone        || '',
-            machine:     customerData.machineString || customerData.model || '',
-            symptom:     getSymptomName(customerData.symptom),
-            tier:        customerData.tier ? 'Tier ' + customerData.tier + '/5' : '',
-            description: customerData.description  || ''
+            // Individual fields for Make.com mapping
+            customer_name:        customerData.name         || 'Not provided',
+            customer_phone:       customerData.phone        || 'Not provided',
+            customer_email:       customerData.email        || 'Not provided',
+            machine_info:         customerData.machineString || customerData.model || 'Not provided',
+            symptom_name:         getSymptomName(customerData.symptom) || 'Not provided',
+            repair_tier:          customerData.tier ? 'Tier ' + customerData.tier + '/5' : 'Not provided',
+            problem_description: customerData.description  || 'Not provided',
+            full_summary:         smsText
         })
     }).catch(function(err) {
         console.warn('Webhook call failed:', err);
-        // Don't throw — email path may have already succeeded
     });
 }
 
@@ -294,7 +297,7 @@ function getSymptomName(s) {
 }
 
 function getRecName(r) {
-    return { 'diy': 'DIY OK', 'caution': 'CAUTION', 'professional': 'CALL JEFF' }[r] || r || '';
+    return { 'diy': 'DIY OK', 'caution': 'CAUTION', 'professional': 'CALL TECHNICIAN' }[r] || r || '';
 }
 
 
