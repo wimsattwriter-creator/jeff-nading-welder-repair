@@ -130,7 +130,7 @@ function getBasePath() {
 
 function checkout() {
     if (cart.length === 0) return;
-    alert('Checkout functionality will be connected to a payment processor. For now, please contact us directly with your order.\n\nCart total: check with service personnell on current pricing');
+    alert('Checkout functionality will be connected to a payment processor. For now, please contact a technician directly with your order.\n\nCart total: check with service personnell on current pricing');
 }
 
 // Initialize cart UI on page load
