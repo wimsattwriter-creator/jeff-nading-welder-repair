@@ -1034,7 +1034,7 @@ function generateResults() {
                 &#128234; Send My Info to us
             </button>
             <div id="sendConfirmation" style="display:none;margin-top:1rem;padding:1rem;background:#f0fff4;border:1px solid #28A745;border-radius:8px;text-align:center;">
-                <strong>&#9989; Sent!</strong> us has received your assessment details via text and email. He'll reach out soon.
+                <strong>&#9989; Sent!</strong> us has received your assessment details via text and email. We'll reach out soon.
             </div>
         </div>
     `;
