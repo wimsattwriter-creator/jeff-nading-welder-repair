@@ -72,6 +72,7 @@ function sendEmailTous(customerData, recipientEmail) {
         customerData.description || '—',
         '',
         '─────────────────────────',
+        'Source: Joey\'s Web Filter',
         'Submitted: ' + new Date().toLocaleString()
     ].join('\n');
 
@@ -79,6 +80,7 @@ function sendEmailTous(customerData, recipientEmail) {
         to_email: recipientEmail,
         subject:  subject,
         message:  body,
+        website:   "Joey's Web Filter",
         // Individual fields for templates that don't use the {{message}} block:
         customer_name:    customerData.name,
         customer_phone:    customerData.phone,
