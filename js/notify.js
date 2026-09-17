@@ -125,7 +125,14 @@ function sendSmsViaWebhook(customerData) {
         body: JSON.stringify({
             // The 'message' field is the pre-formatted summary
             message:     smsText,
-            // Individual fields for Make.com mapping
+            // Original keys for backward compatibility
+            name:        customerData.name         || '',
+            phone:       customerData.phone        || '',
+            machine:     customerData.machineString || customerData.model || '',
+            symptom:     getSymptomName(customerData.symptom),
+            tier:        customerData.tier ? 'Tier ' + customerData.tier + '/5' : '',
+            description: customerData.description  || '',
+            // Explicit keys for clearer Make.com mapping
             customer_name:        customerData.name         || 'Not provided',
             customer_phone:       customerData.phone        || 'Not provided',
             customer_email:       customerData.email        || 'Not provided',
