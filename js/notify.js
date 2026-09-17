@@ -220,8 +220,14 @@ function sendAssessmentTous() {
         recommendation:  currentData.recommendation || ''
     };
 
-    // DEBUG: Let's see exactly what is being sent.
-    console.log('DEBUG: Final customerData to be sent:', customerData);
+    // DEBUG: Show the user exactly what is being sent so we can diagnose the "no data" issue
+    alert('DEBUG: Attempting to send the following data:\n\n' +
+          'Name: ' + customerData.name + '\n' +
+          'Phone: ' + customerData.phone + '\n' +
+          'Machine: ' + customerData.machineString + '\n' +
+          'Symptom: ' + customerData.symptom + '\n' +
+          'Tier: ' + customerData.tier + '\n' +
+          'Recommendation: ' + customerData.recommendation);
 
     // Show loading state
     if (sendBtn) {
