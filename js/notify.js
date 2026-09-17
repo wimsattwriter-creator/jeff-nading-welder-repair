@@ -179,25 +179,35 @@ function sendAssessmentTous() {
     }
     if (!valid) return;
 
-    // Pull saved assessment data
-    const saved = JSON.parse(localStorage.getItem('assessmentData') || '{}');
+    // Pull saved assessment data from localStorage or global state
+    let saved = {};
+    try {
+        saved = JSON.parse(localStorage.getItem('assessmentData') || '{}');
+    } catch (e) {
+        console.warn('Failed to parse assessmentData from localStorage');
+    }
+
+    // Fallback to global assessmentData object if it exists in the current window
+    const currentData = (typeof assessmentData !== 'undefined') ? assessmentData : saved;
 
     const customerData = {
         name:          nameInput.value.trim(),
         phone:         phoneInput.value.trim(),
         email:         emailInput ? emailInput.value.trim() : '',
-        model:         saved.model         || (typeof assessmentData !== 'undefined' ? assessmentData.model         : ''),
-        machineString: saved.machineString || '',
-        serialNumber:  saved.serialNumber  || (typeof assessmentData !== 'undefined' ? assessmentData.serialNumber  : ''),
-        decodedYear:   saved.decodedYear   || (typeof assessmentData !== 'undefined' ? assessmentData.decodedYear   : ''),
-        engine:        saved.engine        || (typeof assessmentData !== 'undefined' ? assessmentData.engine        : ''),
-        symptom:       saved.symptom       || (typeof assessmentData !== 'undefined' ? assessmentData.symptom       : ''),
-        description:   saved.description   || (typeof assessmentData !== 'undefined' ? assessmentData.description   : ''),
-        tier:          saved.tier          || (typeof assessmentData !== 'undefined' ? assessmentData.repairTier    : ''),
-        difficulty:    saved.difficulty    || (typeof assessmentData !== 'undefined' ? assessmentData.repairDifficulty : ''),
-        skillLevel:    saved.skillLevel    || '',
-        recommendation: saved.recommendation || (typeof assessmentData !== 'undefined' ? assessmentData.recommendation : '')
+        model:         currentData.model         || '',
+        machineString:  currentData.machineString || (typeof buildMachineString === 'function' ? buildMachineString(currentData) : ''),
+        serialNumber:   currentData.serialNumber  || '',
+        decodedYear:    currentData.decodedYear   || '',
+        engine:         currentData.engine        || '',
+        symptom:        currentData.symptom       || '',
+        description:    currentData.description   || '',
+        tier:           currentData.tier          || currentData.repairTier || '',
+        difficulty:     currentData.difficulty    || currentData.repairDifficulty || '',
+        skillLevel:     currentData.skillLevel    || '',
+        recommendation:  currentData.recommendation || ''
     };
+
+    console.log('Sending Assessment Data to Notification Services:', customerData);
 
     // Show loading state
     sendBtn.textContent = 'Sending…';
