@@ -286,3 +286,20 @@ User reported receiving emails with labels but no data.
 ### Verification of Email Data Fix (Human insight — 2026-09-17)
 
 User confirmed that the email notification now successfully includes the customer and machine data. The mapping fix in `js/notify.js` is verified and operational.
+
+### Machine Database Expansion (AI implementation — 2026-09-17)
+
+Expanded the `machine-db.js` database to include a wider range of engine-driven welder models to improve the accuracy of the assessment tool and the completeness of the dropdown lists.
+
+**Additions include:**
+1. **Miller:**
+   - Added Bobcat 200 Air Pak and Bobcat 3 Phase.
+   - Added Trailblazer 330 Diesel.
+   - Added Fusion 185.
+2. **Hobart:**
+   - Added Champion 145 Recoil variant.
+3. **Lincoln Electric (Ranger):**
+   - Added a comprehensive set of Ranger variants including One-Pak, Air 260MPX, LPG, Diesel, and the legacy 250 GXT.
+   - Added EFI variants for the Ranger 330MPX.
+
+This expansion ensures that customers can find their specific machine more easily, leading to more accurate diagnostics and notifications for the technician.

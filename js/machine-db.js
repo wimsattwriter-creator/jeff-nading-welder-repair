@@ -15,6 +15,9 @@ const MACHINE_DB = {
             serialHelpUrl: 'https://www.millerwelds.com/support/serial-number-chart',
             serialHelpText: 'The serial number is on a rating label on the back or bottom of your machine.',
             lines: {
+                bobcat: {
+                    name: 'Bobcat',
+                    models: {
                         'bobcat-200-airpak': {
                             name: 'Bobcat 200 Air Pak',
                             engines: ['kohler-ch730', 'kubota-diesel'],
