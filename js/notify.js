@@ -123,24 +123,19 @@ function sendSmsViaWebhook(customerData) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            // The 'message' field is the pre-formatted summary
+            // PRIMARY: The pre-formatted natural language summary
+            // Map this one variable in Make.com to the Twilio body
             message:     smsText,
-            // Original keys for backward compatibility
+            full_summary: smsText,
+
+            // DATA: Original values (without labels) for flexible mapping
             name:        customerData.name         || '',
             phone:       customerData.phone        || '',
             machine:     customerData.machineString || customerData.model || '',
-            symptom:     getSymptomName(customerData.symptom),
-            tier:        customerData.tier ? 'Tier ' + customerData.tier + '/5' : '',
+            symptom:     getSymptomName(customerData.symptom) || '',
+            tier:        customerData.tier          || '',
             description: customerData.description  || '',
-            // Explicit keys for clearer Make.com mapping
-            customer_name:        customerData.name         || 'Not provided',
-            customer_phone:       customerData.phone        || 'Not provided',
-            customer_email:       customerData.email        || 'Not provided',
-            machine_info:         customerData.machineString || customerData.model || 'Not provided',
-            symptom_name:         getSymptomName(customerData.symptom) || 'Not provided',
-            repair_tier:          customerData.tier ? 'Tier ' + customerData.tier + '/5' : 'Not provided',
-            problem_description: customerData.description  || 'Not provided',
-            full_summary:         smsText
+            recommendation: customerData.recommendation || ''
         })
     }).catch(function(err) {
         console.warn('Webhook call failed:', err);
@@ -173,14 +168,16 @@ function sendAssessmentTous() {
 
     // Validate required fields
     let valid = true;
-    if (!nameInput || !nameInput.value.trim()) {
-        if (nameInput) nameInput.focus();
-        if (nameInput) nameInput.style.borderColor = '#DC3545';
+    if (!nameInput || !nameInput.value || !nameInput.value.trim()) {
+        if (nameInput) {
+            nameInput.focus();
+            nameInput.style.borderColor = '#DC3545';
+        }
         valid = false;
     } else if (nameInput) {
         nameInput.style.borderColor = '';
     }
-    if (!phoneInput || !phoneInput.value.trim()) {
+    if (!phoneInput || !phoneInput.value || !phoneInput.value.trim()) {
         if (valid && phoneInput) phoneInput.focus();
         if (phoneInput) phoneInput.style.borderColor = '#DC3545';
         valid = false;
@@ -189,22 +186,28 @@ function sendAssessmentTous() {
     }
     if (!valid) return;
 
-    // Pull saved assessment data from localStorage or global state
+    // Pull saved assessment data from localStorage
     let saved = {};
     try {
-        saved = JSON.parse(localStorage.getItem('assessmentData') || '{}');
+        const stored = localStorage.getItem('assessmentData');
+        if (stored) {
+            saved = JSON.parse(stored);
+            console.log('Loaded assessment data from localStorage:', saved);
+        } else {
+            console.warn('No assessmentData found in localStorage');
+        }
     } catch (e) {
-        console.warn('Failed to parse assessmentData from localStorage');
+        console.error('Failed to parse assessmentData from localStorage:', e);
     }
 
-    // Fallback to global assessmentData object if it exists in the current window
-    const currentData = (typeof assessmentData !== 'undefined') ? assessmentData : saved;
+    // Fallback to global object if we are on the assessment page
+    const currentData = (typeof assessmentData !== 'undefined' && Object.keys(assessmentData).length > 0) ? assessmentData : saved;
 
     const customerData = {
         name:          nameInput ? nameInput.value.trim() : '',
         phone:         phoneInput ? phoneInput.value.trim() : '',
         email:         emailInput ? emailInput.value.trim() : '',
-        model:         currentData.model         || '',
+        model:         currentData.model         || currentData.machineModel || '',
         machineString:  currentData.machineString || (typeof buildMachineString === 'function' ? buildMachineString(currentData) : ''),
         serialNumber:   currentData.serialNumber  || '',
         decodedYear:    currentData.decodedYear   || '',
@@ -217,7 +220,8 @@ function sendAssessmentTous() {
         recommendation:  currentData.recommendation || ''
     };
 
-    console.log('Sending Assessment Data to Notification Services:', customerData);
+    // DEBUG: Let's see exactly what is being sent.
+    console.log('DEBUG: Final customerData to be sent:', customerData);
 
     // Show loading state
     if (sendBtn) {
@@ -247,29 +251,24 @@ function sendAssessmentTous() {
 // ─── UTILITIES ────────────────────────────────────────────────────────────────
 
 function buildSmsText(data) {
-    // Kept short — SMS is 160 chars per segment
-    const parts = ['WELDER LEAD:'];
-    if (data.name)            parts.push(data.name);
-    if (data.phone)           parts.push('Ph:' + data.phone);
-    if (data.machineString)   parts.push(data.machineString);
-    else if (data.model)      parts.push(getModelName(data.model));
-    const symptom = getSymptomName(data.symptom);
-    if (symptom)              parts.push(symptom);
-    if (data.tier)            parts.push('T' + data.tier + '/5');
-    if (data.recommendation)  parts.push(getRecName(data.recommendation));
-
-    let sms = parts.join(' | ');
-
-    // Append description if room remains
-    if (data.description) {
-        const room = 159 - sms.length;
-        if (room > 12) {
-            const snippet = data.description.substring(0, room - 4);
-            sms += ' | ' + snippet + (data.description.length > room - 4 ? '…' : '');
-        }
+    if (!data.name && !data.phone && !data.machineString && !data.model) {
+        return 'New Welder Lead: No customer or machine data provided.';
     }
 
-    return sms.substring(0, 160);
+    const parts = [];
+    if (data.name)            parts.push(data.name);
+    if (data.phone)           parts.push(`(${data.phone})`);
+
+    const machine = data.machineString || (data.model ? getModelName(data.model) : 'Unknown Machine');
+    parts.push(machine);
+
+    const symptom = getSymptomName(data.symptom);
+    if (symptom)              parts.push(symptom);
+
+    if (data.tier)            parts.push(`Tier ${data.tier}`);
+    if (data.recommendation)  parts.push(getRecName(data.recommendation));
+
+    return 'Welder Lead: ' + parts.join(' - ');
 }
 
 function saveInquiryLocally(data) {
