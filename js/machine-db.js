@@ -1,5 +1,5 @@
 /* ============================================
-   Jeff Nading Welder Repair — Machine Database
+   Welder Repair Services — Machine Database
    Version: 1.0
 
    Machine identification database with serial

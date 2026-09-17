@@ -232,3 +232,17 @@ Adding e-commerce changes the scope. Updated page structure:
 - Set up payment processing for shop (Stripe/PayPal)
 - Optimize images for web (compression, proper sizing)
 - Domain registration and hosting setup
+
+---
+
+## Session 4 — 2026-09-17
+
+### Branding and Pricing Update (Human insight)
+
+User requested two significant changes to the website's public presentation:
+
+1. **Anonymize the Technician** — Remove all specific mentions of "Jeff Nading" and "Jeff" from the website. Replace with generic terms like "us", "the shop", or "the technician" to shift the focus from an individual to the service.
+2. **Remove Specific Pricing** — Remove all numeric prices from the product shop and service sections. Replace them with the phrase: "check with service personnell on current pricing".
+
+**Objective:** Shift the website from a personal portfolio/business page to a more general service-oriented professional site while removing fixed pricing to allow for flexible quoting based on the specific job.
+

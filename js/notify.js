@@ -1,14 +1,14 @@
 /* ============================================
-   Jeff Nading Welder Repair — Notification Module
+   Welder Repair Services — Notification Module
    Version: 2.0
 
    HOW IT WORKS (two independent paths):
    ─────────────────────────────────────
-   PATH 1 — EMAIL (EmailJS → Jeff's Gmail)
+   PATH 1 — EMAIL (EmailJS → our Gmail)
      Sends a full-detail email to jlnading@gmail.com.
      This works reliably. EmailJS free tier = 200/month.
 
-   PATH 2 — SMS (Make.com Webhook → Twilio → Jeff's phone)
+   PATH 2 — SMS (Make.com Webhook → Twilio → our phone)
      Posts JSON to a Make.com webhook URL.
      Make.com calls Twilio, Twilio delivers the SMS.
      No credentials are exposed in client code.
@@ -31,7 +31,7 @@
    3. Click "Add" → name it "welder-lead" → copy the webhook URL
    4. Add a second module: search "Twilio" → "Send an SMS"
         From: your Twilio number
-        To:   Jeff's cell (8306607795)
+        To:   our cell (8306607795)
         Body: {{1.message}}   ← maps the "message" field from the webhook
    5. Turn the scenario ON
    6. Paste the webhook URL into MAKE_WEBHOOK_URL below
@@ -66,7 +66,7 @@ function initEmailJS() {
 
 // ─── PATH 1: EMAIL TO JEFF ────────────────────────────────────────────────────
 
-function sendEmailToJeff(customerData) {
+function sendEmailTous(customerData) {
     if (typeof emailjs === 'undefined') {
         console.warn('EmailJS not loaded — skipping email path');
         return Promise.resolve();
@@ -140,13 +140,13 @@ function sendSmsViaWebhook(customerData) {
 
 // ─── MAIN SEND FUNCTION ───────────────────────────────────────────────────────
 
-function sendTextToJeff(customerData) {
+function sendTextTous(customerData) {
     // Save locally regardless — backup copy always exists
     saveInquiryLocally(customerData);
 
     // Fire both paths in parallel — one failing doesn't block the other
     return Promise.all([
-        sendEmailToJeff(customerData),
+        sendEmailTous(customerData),
         sendSmsViaWebhook(customerData)
     ]);
 }
@@ -154,11 +154,11 @@ function sendTextToJeff(customerData) {
 
 // ─── FORM HANDLER (called from assessment results page) ──────────────────────
 
-function sendAssessmentToJeff() {
+function sendAssessmentTous() {
     const nameInput = document.getElementById('customerName');
     const phoneInput = document.getElementById('customerPhone');
     const emailInput = document.getElementById('customerEmail');
-    const sendBtn = document.getElementById('sendToJeffBtn');
+    const sendBtn = document.getElementById('sendTousBtn');
     const confirmation = document.getElementById('sendConfirmation');
 
     // Validate required fields
@@ -204,7 +204,7 @@ function sendAssessmentToJeff() {
     sendBtn.disabled = true;
     sendBtn.style.opacity = '0.7';
 
-    sendTextToJeff(customerData).then(function() {
+    sendTextTous(customerData).then(function() {
         localStorage.setItem('customerInfoSent', 'true');
         localStorage.setItem('customerData', JSON.stringify(customerData));
 

@@ -1,5 +1,5 @@
 /* ============================================
-   Jeff Nading Miller Welder Repair — Shop
+   Welder Repair Miller Welder Repair — Shop
    Version: 1.0
 
    Product catalog, filtering, and display logic.
@@ -7,7 +7,7 @@
    ============================================ */
 
 // --- Product Catalog ---
-// To add/remove products, edit this array. Jeff can update prices and descriptions here.
+// To add/remove products, edit this array. us can update prices and descriptions here.
 const products = [
     {
         id: 'trombetta-solenoid',
@@ -127,7 +127,7 @@ function renderProducts(filter) {
                 <h3 class="product-card__title">${product.name}</h3>
                 <p class="product-card__desc">${product.description}</p>
                 <div class="product-card__footer">
-                    <span class="product-card__price">${formatCurrency(product.price)}</span>
+                    <span class="product-card__price">check with service personnell on current pricing</span>
                     <button class="product-card__add-btn" data-product-id="${product.id}"
                         onclick="addToCart('${product.id}', '${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.image}')">
                         Add to Cart

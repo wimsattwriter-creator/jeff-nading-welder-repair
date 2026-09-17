@@ -1,5 +1,5 @@
 /* ============================================
-   Jeff Nading Miller Welder Repair — Assessment Engine
+   Welder Repair Miller Welder Repair — Assessment Engine
    Version: 1.0
 
    Decision tree, skill scoring, and recommendation
@@ -844,7 +844,7 @@ function calculateRepairTier() {
         default:
             tier = 3; difficulty = 5;
             description = 'Unable to determine — please provide more details.';
-            whatsInvolved = 'Based on the information provided, we can\'t narrow down the exact issue. Send your details to Jeff using the form below and he\'ll follow up.';
+            whatsInvolved = 'Based on the information provided, we can\'t narrow down the exact issue. Send your details to us using the form below and he\'ll follow up.';
             photoSrc = '../images/complete-units/bobcat-modern-blue-01.jpeg';
             photoAlt = 'Miller Bobcat welder';
     }
@@ -941,12 +941,12 @@ function generateResults() {
         recClass = 'result-card--caution';
         recIcon = '&#9888;';
         recTitle = 'Proceed with Caution';
-        recMessage = 'You have the skills to attempt this, but the repair is complex enough that things could go wrong. Consider calling Jeff for a quick consultation before diving in — a 5-minute conversation could save you hours of frustration.';
+        recMessage = 'You have the skills to attempt this, but the repair is complex enough that things could go wrong. Consider calling us for a quick consultation before diving in — a 5-minute conversation could save you hours of frustration.';
     } else {
         recClass = 'result-card--professional';
         recIcon = '&#128222;';
-        recTitle = 'Call Jeff';
-        recMessage = 'This repair requires specialized tools, knowledge, or experience that goes beyond what most people have in their shop. This isn\'t a knock on your skills — this is genuinely complex work. Jeff has the expertise and equipment to handle this efficiently.';
+        recTitle = 'Call us';
+        recMessage = 'This repair requires specialized tools, knowledge, or experience that goes beyond what most people have in their shop. This isn\'t a knock on your skills — this is genuinely complex work. us has the expertise and equipment to handle this efficiently.';
     }
 
     const html = `
@@ -1002,20 +1002,20 @@ function generateResults() {
             <p style="max-width:600px;margin:1rem auto;">${recMessage}</p>
             ${recommendation !== 'diy' ? `
                 <div style="margin-top:2rem;">
-                    <p><strong>Ready to get this fixed? Send your info to Jeff now:</strong></p>
+                    <p><strong>Ready to get this fixed? Send your info to us now:</strong></p>
                 </div>
             ` : `
                 <div style="margin-top:1.5rem;">
                     <p class="text-muted">Need parts? Check our <a href="shop.html">Shop</a> for quality replacement components.</p>
-                    <p style="margin-top:1rem;"><strong>Want Jeff to know about your situation anyway?</strong></p>
+                    <p style="margin-top:1rem;"><strong>Want us to know about your situation anyway?</strong></p>
                 </div>
             `}
         </div>
 
-        <!-- Send to Jeff Form -->
+        <!-- Send to us Form -->
         <div class="assessment__question" style="margin-top:1.5rem;">
-            <h3>&#128233; Send Your Assessment to Jeff</h3>
-            <p class="text-muted">Enter your name and phone number. Jeff will receive your problem details and machine info and reach out to you.</p>
+            <h3>&#128233; Send Your Assessment to us</h3>
+            <p class="text-muted">Enter your name and phone number. us will receive your problem details and machine info and reach out to you.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;" class="notify-grid">
                 <div class="form-group" style="margin:0;">
                     <label for="customerName">Your Name</label>
@@ -1030,11 +1030,11 @@ function generateResults() {
                 <label for="customerEmail">Email (optional)</label>
                 <input type="email" id="customerEmail" placeholder="john@example.com">
             </div>
-            <button class="btn btn--primary btn--large" style="width:100%;" id="sendToJeffBtn" onclick="sendAssessmentToJeff()">
-                &#128234; Send My Info to Jeff
+            <button class="btn btn--primary btn--large" style="width:100%;" id="sendTousBtn" onclick="sendAssessmentTous()">
+                &#128234; Send My Info to us
             </button>
             <div id="sendConfirmation" style="display:none;margin-top:1rem;padding:1rem;background:#f0fff4;border:1px solid #28A745;border-radius:8px;text-align:center;">
-                <strong>&#9989; Sent!</strong> Jeff has received your assessment details via text and email. He'll reach out soon.
+                <strong>&#9989; Sent!</strong> us has received your assessment details via text and email. He'll reach out soon.
             </div>
         </div>
     `;

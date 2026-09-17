@@ -1,5 +1,5 @@
 /* ============================================
-   Jeff Nading Miller Welder Repair — Main JavaScript
+   Welder Repair Miller Welder Repair — Main JavaScript
    Version: 1.0
    ============================================ */
 
@@ -32,7 +32,7 @@ function togglePanicPanel() {
     const noteEl = document.getElementById('panicAssessmentNote');
     if (noteEl) {
         if (assessmentDone === 'true') {
-            noteEl.innerHTML = '<strong>Assessment completed!</strong> Jeff has the context he needs. Reach out anytime.';
+            noteEl.innerHTML = '<strong>Assessment completed!</strong> us has the context he needs. Reach out anytime.';
             noteEl.style.borderColor = '#28A745';
             noteEl.style.background = '#f0fff4';
         }

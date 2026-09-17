@@ -1,5 +1,5 @@
 /* ============================================
-   Jeff Nading Miller Welder Repair — Shopping Cart
+   Welder Repair Miller Welder Repair — Shopping Cart
    Version: 1.0
    ============================================ */
 
@@ -90,7 +90,7 @@ function updateCartUI() {
                     <img class="cart-item__img" src="${item.image}" alt="${item.name}">
                     <div class="cart-item__info">
                         <div class="cart-item__name">${item.name}</div>
-                        <div class="cart-item__price">${formatCurrency(item.price)}</div>
+                        <div class="cart-item__price">check with service personnell on current pricing</div>
                         <div class="cart-item__qty">
                             <button onclick="updateQty('${item.id}', -1)">-</button>
                             <span>${item.qty}</span>
@@ -103,7 +103,7 @@ function updateCartUI() {
         });
         itemsEl.innerHTML = html;
         if (footerEl) footerEl.style.display = 'block';
-        if (totalEl) totalEl.textContent = formatCurrency(getCartTotal());
+        if (totalEl) totalEl.textContent = 'check with service personnell on current pricing';
     }
 }
 
@@ -130,7 +130,7 @@ function getBasePath() {
 
 function checkout() {
     if (cart.length === 0) return;
-    alert('Checkout functionality will be connected to a payment processor. For now, please contact Jeff directly with your order.\n\nCart total: ' + formatCurrency(getCartTotal()));
+    alert('Checkout functionality will be connected to a payment processor. For now, please contact us directly with your order.\n\nCart total: check with service personnell on current pricing');
 }
 
 // Initialize cart UI on page load
