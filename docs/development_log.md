@@ -254,3 +254,25 @@ User noted that the "Send" button appearing immediately after the assessment res
 **Implementation:**
 - Modified `js/assessment.js` to remove the result-page form and add a CTA button linking to `contact.html`.
 - Updated terminology in `js/assessment.js` and `pages/contact.html` to replace individual references ("he'll") with generic professional terms ("a technician will").
+
+---
+
+## Session 5 — 2026-09-17 (Continued)
+
+### Notification System Overhaul (Human insight)
+
+User requested the complete removal of the SMS/Make.com/Twilio notification path due to cost, complexity, and reliability issues. The system will now rely solely on EmailJS for notifications.
+
+**Key Changes:**
+1. **SMS Removal:** Removed all references to Make.com webhooks and Twilio API calls in `js/notify.js`.
+2. **Email Expansion:** Updated the notification logic to send lead emails to both the lead technician (Jeff) and the user's specified email address.
+3. **UI Cleanup:** Updated the confirmation message on the contact page to remove mentions of "text" notifications, ensuring the user is informed that the technician will respond via email.
+4. **Version Bump:** Updated `js/notify.js` to version 3.0 to reflect the architectural shift to email-only notifications.
+
+### Notification Recipient Update (Human insight — 2026-09-17)
+
+Updated the notification system to include the user's email address: . All lead notifications will now be sent to both the lead technician and the user.
+
+### Notification Recipient Update (Human insight — 2026-09-17)
+
+Updated the notification system to include the user's email address: wimsattwelder@gmail.com. All lead notifications will now be sent to both the lead technician and the user.
