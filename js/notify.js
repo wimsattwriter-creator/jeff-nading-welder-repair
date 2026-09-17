@@ -165,26 +165,26 @@ function sendTextTous(customerData) {
 // ─── FORM HANDLER (called from assessment results page) ──────────────────────
 
 function sendAssessmentTous() {
-    const nameInput = document.getElementById('customerName');
-    const phoneInput = document.getElementById('customerPhone');
-    const emailInput = document.getElementById('customerEmail');
+    const nameInput = document.getElementById('name') || document.getElementById('customerName');
+    const phoneInput = document.getElementById('phone') || document.getElementById('customerPhone');
+    const emailInput = document.getElementById('email') || document.getElementById('customerEmail');
     const sendBtn = document.getElementById('sendTousBtn');
     const confirmation = document.getElementById('sendConfirmation');
 
     // Validate required fields
     let valid = true;
-    if (!nameInput.value.trim()) {
-        nameInput.focus();
-        nameInput.style.borderColor = '#DC3545';
+    if (!nameInput || !nameInput.value.trim()) {
+        if (nameInput) nameInput.focus();
+        if (nameInput) nameInput.style.borderColor = '#DC3545';
         valid = false;
-    } else {
+    } else if (nameInput) {
         nameInput.style.borderColor = '';
     }
-    if (!phoneInput.value.trim()) {
-        if (valid) phoneInput.focus();
-        phoneInput.style.borderColor = '#DC3545';
+    if (!phoneInput || !phoneInput.value.trim()) {
+        if (valid && phoneInput) phoneInput.focus();
+        if (phoneInput) phoneInput.style.borderColor = '#DC3545';
         valid = false;
-    } else {
+    } else if (phoneInput) {
         phoneInput.style.borderColor = '';
     }
     if (!valid) return;
@@ -201,8 +201,8 @@ function sendAssessmentTous() {
     const currentData = (typeof assessmentData !== 'undefined') ? assessmentData : saved;
 
     const customerData = {
-        name:          nameInput.value.trim(),
-        phone:         phoneInput.value.trim(),
+        name:          nameInput ? nameInput.value.trim() : '',
+        phone:         phoneInput ? phoneInput.value.trim() : '',
         email:         emailInput ? emailInput.value.trim() : '',
         model:         currentData.model         || '',
         machineString:  currentData.machineString || (typeof buildMachineString === 'function' ? buildMachineString(currentData) : ''),
@@ -220,22 +220,26 @@ function sendAssessmentTous() {
     console.log('Sending Assessment Data to Notification Services:', customerData);
 
     // Show loading state
-    sendBtn.textContent = 'Sending…';
-    sendBtn.disabled = true;
-    sendBtn.style.opacity = '0.7';
+    if (sendBtn) {
+        sendBtn.textContent = 'Sending…';
+        sendBtn.disabled = true;
+        sendBtn.style.opacity = '0.7';
+    }
 
     sendTextTous(customerData).then(function() {
         localStorage.setItem('customerInfoSent', 'true');
         localStorage.setItem('customerData', JSON.stringify(customerData));
 
-        sendBtn.style.display = 'none';
+        if (sendBtn) sendBtn.style.display = 'none';
         if (confirmation) confirmation.style.display = 'block';
     }).catch(function(err) {
         console.error('All notification paths failed:', err);
-        sendBtn.textContent = 'Send Failed — Try Again';
-        sendBtn.disabled = false;
-        sendBtn.style.opacity = '1';
-        sendBtn.style.background = '#DC3545';
+        if (sendBtn) {
+            sendBtn.textContent = 'Send Failed — Try Again';
+            sendBtn.disabled = false;
+            sendBtn.style.opacity = '1';
+            sendBtn.style.background = '#DC3545';
+        }
     });
 }
 

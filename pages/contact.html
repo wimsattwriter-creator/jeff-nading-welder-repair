@@ -73,13 +73,13 @@
 
                     <div style="margin-bottom:2rem;">
                         <div style="padding:1rem 0;font-size:1.1rem;">
-                            <p>Fill out the form below or complete a <a href="assessment.html"><strong>Repair Assessment</strong></a> — your details go directly to us and he'll get back to you.</p>
+                            <p>Fill out the form below or complete a <a href="assessment.html"><strong>Repair Assessment</strong></a> — your details go directly to us and a technician will get back to you.</p>
                         </div>
                     </div>
 
                     <div style="background:var(--off-white);border-radius:8px;padding:1.25rem;">
                         <h4>What Happens Next</h4>
-                        <p class="text-muted" style="font-size:0.9rem;">us receives your message directly and will reach out to you. If you completed the online assessment, he'll already have context about your problem.</p>
+                        <p class="text-muted" style="font-size:0.9rem;">us receives your message directly and will reach out to you. If you completed the online assessment, a technician will already have context about your problem.</p>
                     </div>
                 </div>
 
@@ -117,7 +117,10 @@
                         <!-- Hidden field for assessment data -->
                         <input type="hidden" id="assessmentDataField" name="assessment_data" value="">
 
-                        <button type="submit" class="btn btn--primary" style="width:100%;">Send Message</button>
+                        <button type="submit" class="btn btn--primary" style="width:100%;" id="sendTousBtn">Send Message</button>
+                        <div id="sendConfirmation" style="display:none;margin-top:1rem;padding:1rem;background:#f0fff4;border:1px solid #28A745;border-radius:8px;text-align:center;">
+                            <strong>&#9989; Sent!</strong> A technician has received your assessment details via text and email. We'll reach out soon.
+                        </div>
                         <p class="text-muted mt-2" style="font-size:0.8rem;text-align:center;">Your assessment results will be included with this message automatically.</p>
                     </form>
                 </div>
@@ -236,10 +239,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            // In production, this would submit to Formspree or similar.
-            // For now, show confirmation.
-            alert('Message sent! us will review your details and get back to you soon.');
-            form.reset();
+            if (typeof sendAssessmentTous === 'function') {
+                sendAssessmentTous();
+            } else {
+                alert('Error: Notification system not loaded.');
+            }
         });
     }
 });

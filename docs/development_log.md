@@ -146,7 +146,6 @@ The WhatsApp folder contains 100 images documenting Jeff's repair work. Categori
 - Business name (is it "Jeff Nading Welder Repair" or something else?)
 
 ### Next Steps
-
 - Set up project file structure (index.html, styles, scripts, images)
 - Build the home page with "Don't Panic" button component
 - Start the assessment tool logic in JavaScript
@@ -246,3 +245,12 @@ User requested two significant changes to the website's public presentation:
 
 **Objective:** Shift the website from a personal portfolio/business page to a more general service-oriented professional site while removing fixed pricing to allow for flexible quoting based on the specific job.
 
+### User Flow Optimization (AI implementation)
+
+User noted that the "Send" button appearing immediately after the assessment results was non-functional, while the one on the contact page worked. 
+
+**Decision:** Linearize the user flow. Remove the inline "Send" form from the results page in `js/assessment.js` and replace it with a link/button that directs the user to `pages/contact.html`. This ensures a single, reliable submission point and provides a better user experience by clearly separating the diagnostic results from the contact information gathering.
+
+**Implementation:**
+- Modified `js/assessment.js` to remove the result-page form and add a CTA button linking to `contact.html`.
+- Updated terminology in `js/assessment.js` and `pages/contact.html` to replace individual references ("he'll") with generic professional terms ("a technician will").
