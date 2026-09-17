@@ -139,7 +139,13 @@ function sendSmsViaWebhook(customerData) {
             description: customerData.description  || '',
             recommendation: customerData.recommendation || ''
         })
+    }).then(function(response) {
+        if (!response.ok) {
+            throw new Error('Server responded with ' + response.status);
+        }
+        console.log('Webhook successfully reached Make.com');
     }).catch(function(err) {
+        alert('SMS Webhook Error: ' + err.message + '\n\nThis might be caused by an ad-blocker or a network issue.');
         console.warn('Webhook call failed:', err);
     });
 }
