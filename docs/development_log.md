@@ -276,3 +276,13 @@ Updated the notification system to include the user's email address: . All lead 
 ### Notification Recipient Update (Human insight — 2026-09-17)
 
 Updated the notification system to include the user's email address: wimsattwelder@gmail.com. All lead notifications will now be sent to both the lead technician and the user.
+
+### Email Data Mapping Fix (AI implementation — 2026-09-17)
+
+User reported receiving emails with labels but no data. 
+**Root Cause:** The EmailJS template was likely configured to use individual variables (e.g., `{{customer_name}}`) instead of the single `{{message}}` block.
+**Solution:** Updated `js/notify.js` to send both the pre-formatted `message` string AND all individual data fields (name, phone, machine, etc.) in the EmailJS payload. This ensures compatibility with any template configuration.
+
+### Verification of Email Data Fix (Human insight — 2026-09-17)
+
+User confirmed that the email notification now successfully includes the customer and machine data. The mapping fix in `js/notify.js` is verified and operational.

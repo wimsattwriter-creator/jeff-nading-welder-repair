@@ -15,68 +15,23 @@ const MACHINE_DB = {
             serialHelpUrl: 'https://www.millerwelds.com/support/serial-number-chart',
             serialHelpText: 'The serial number is on a rating label on the back or bottom of your machine.',
             lines: {
-                bobcat: {
-                    name: 'Bobcat',
-                    models: {
-                        'bobcat-225-onan': {
-                            name: 'Bobcat 225 (Onan engine)',
-                            engines: ['onan-p216', 'onan-p218'],
-                            years: '1980s-early 1990s',
-                            notes: 'Original Bobcat 225 with Onan Performer engine'
-                        },
-                        'bobcat-225g': {
-                            name: 'Bobcat 225G',
-                            engines: ['onan-p216', 'onan-p218'],
-                            years: '1980s-1990s',
-                            notes: ''
-                        },
-                        'bobcat-225g-plus': {
-                            name: 'Bobcat 225G Plus',
-                            engines: ['onan-p216', 'onan-p218'],
-                            years: '1990s',
-                            notes: 'Same internals as 225 NT, fewer body panels'
-                        },
-                        'bobcat-225nt': {
-                            name: 'Bobcat 225 NT',
-                            engines: ['onan-p216', 'onan-p218', 'kohler-ch18', 'kohler-ch20'],
-                            years: '1990s-2000s',
-                            notes: 'NT = enclosed sheet metal design. Onan in earlier units, Kohler in later.'
-                        },
-                        'bobcat-225-kohler': {
-                            name: 'Bobcat 225 (Kohler engine)',
-                            engines: ['kohler-ch730'],
-                            years: '2000s-present',
-                            notes: 'Current production Bobcat 225 with Kohler Command Pro'
-                        },
-                        'bobcat-230': {
-                            name: 'Bobcat 230',
-                            engines: ['kohler-ch730'],
+                        'bobcat-200-airpak': {
+                            name: 'Bobcat 200 Air Pak',
+                            engines: ['kohler-ch730', 'kubota-diesel'],
                             years: '2010s-present',
-                            notes: '230A DC welder, 11kW generator'
+                            notes: 'Air compressor and battery charge/crank assist'
                         },
-                        'bobcat-250': {
-                            name: 'Bobcat 250',
-                            engines: ['kohler-ch730', 'kohler-ch740'],
+                        'bobcat-265-airpak': {
+                            name: 'Bobcat 265 Air Pak',
+                            engines: ['kohler-ech749'],
+                            years: '2020s-present',
+                            notes: 'Built-in 30 cubic feet per minute air compressor'
+                        },
+                        'bobcat-3-phase': {
+                            name: 'Bobcat 3 Phase',
+                            engines: ['kohler-ch740'],
                             years: '2000s-present',
-                            notes: '250A welder, 11kW generator'
-                        },
-                        'bobcat-250-efi': {
-                            name: 'Bobcat 250 EFI',
-                            engines: ['kohler-ech730', 'kohler-ech749'],
-                            years: '2010s-present',
-                            notes: 'Electronic fuel injection — 27% better fuel economy'
-                        },
-                        'bobcat-250-diesel': {
-                            name: 'Bobcat 250 Diesel',
-                            engines: ['kubota-diesel'],
-                            years: '2000s-present',
-                            notes: 'Kubota diesel engine variant'
-                        },
-                        'bobcat-250-lp': {
-                            name: 'Bobcat 250 LP',
-                            engines: ['kohler-ch730-lp'],
-                            years: '2000s-present',
-                            notes: 'Liquid propane fuel variant'
+                            notes: 'Specialized for 480V three-phase pivot irrigation'
                         },
                         'bobcat-260': {
                             name: 'Bobcat 260',
@@ -89,12 +44,6 @@ const MACHINE_DB = {
                             engines: ['kohler-ch740', 'kohler-ech749'],
                             years: '2020s-present',
                             notes: 'Current production, 265A DC'
-                        },
-                        'bobcat-265-airpak': {
-                            name: 'Bobcat 265 Air Pak',
-                            engines: ['kohler-ech749'],
-                            years: '2020s-present',
-                            notes: 'Built-in 30 cubic feet per minute air compressor'
                         }
                     }
                 },
@@ -125,11 +74,28 @@ const MACHINE_DB = {
                             years: '2020s-present',
                             notes: 'Current model, Kohler 27 horsepower electronic fuel injection'
                         },
+                        'trailblazer-330-diesel': {
+                            name: 'Trailblazer 330 Diesel',
+                            engines: ['kubota-diesel'],
+                            years: '2020s-present',
+                            notes: 'Kubota diesel high-performance'
+                        },
                         'trailblazer-330-airpak': {
                             name: 'Trailblazer 330 Air Pak',
                             engines: ['kohler-ech749'],
                             years: '2020s-present',
                             notes: 'Built-in compressor and battery charger'
+                        }
+                    }
+                },
+                fusion: {
+                    name: 'Fusion',
+                    models: {
+                        'fusion-185': {
+                            name: 'Fusion 185',
+                            engines: ['kohler-sh265'],
+                            years: '2010s-present',
+                            notes: 'Compact stick welder'
                         }
                     }
                 },
@@ -165,6 +131,12 @@ const MACHINE_DB = {
                             engines: ['briggs-intek'],
                             years: '2010s-present',
                             notes: 'Briggs & Stratton Intek engine, 4500W, 145A'
+                        },
+                        'champion-145-recoil': {
+                            name: 'Champion 145 Recoil',
+                            engines: ['briggs-intek'],
+                            years: '2010s-present',
+                            notes: 'Recoil start variant'
                         },
                         'champion-10000': {
                             name: 'Champion 10,000',
@@ -214,6 +186,18 @@ const MACHINE_DB = {
                             years: '2010s-present',
                             notes: 'Multi-process capable'
                         },
+                        'ranger-260mpx-onepak': {
+                            name: 'Ranger 260MPX One-Pak',
+                            engines: ['kohler-ch740'],
+                            years: '2010s-present',
+                            notes: 'Integrated undercarriage'
+                        },
+                        'ranger-air-260mpx': {
+                            name: 'Ranger Air 260MPX',
+                            engines: ['kohler-ch740'],
+                            years: '2010s-present',
+                            notes: 'Integrated air compressor'
+                        },
                         'ranger-305g': {
                             name: 'Ranger 305 G',
                             engines: ['kohler-ch740'],
@@ -226,11 +210,41 @@ const MACHINE_DB = {
                             years: '2020s-present',
                             notes: 'Electronic fuel injection variant'
                         },
+                        'ranger-305-lpg': {
+                            name: 'Ranger 305 LPG',
+                            engines: ['kohler-ch740'],
+                            years: '2010s-present',
+                            notes: 'Liquid Propane Gas'
+                        },
+                        'ranger-305-diesel': {
+                            name: 'Ranger 305 D',
+                            engines: ['kubota-diesel'],
+                            years: '2010s-present',
+                            notes: 'Diesel engine variant'
+                        },
                         'ranger-330mpx': {
                             name: 'Ranger 330MPX',
                             engines: ['kohler-ch750'],
                             years: '2020s-present',
                             notes: 'Multi-process, 330A, 12kW'
+                        },
+                        'ranger-330mpx-efi': {
+                            name: 'Ranger 330MPX EFI',
+                            engines: ['kohler-ech749'],
+                            years: '2020s-present',
+                            notes: 'Electronic fuel injection'
+                        },
+                        'ranger-330mpx-onepak': {
+                            name: 'Ranger 330MPX One-Pak',
+                            engines: ['kohler-ch750'],
+                            years: '2020s-present',
+                            notes: 'Integrated undercarriage'
+                        },
+                        'ranger-250-gxt': {
+                            name: 'Ranger 250 GXT',
+                            engines: ['onan-p224'],
+                            years: '1990s-2000s',
+                            notes: 'Legacy AC/DC stick and CV wire'
                         }
                     }
                 }
