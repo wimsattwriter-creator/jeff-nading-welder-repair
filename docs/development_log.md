@@ -303,3 +303,38 @@ Expanded the `machine-db.js` database to include a wider range of engine-driven 
    - Added EFI variants for the Ranger 330MPX.
 
 This expansion ensures that customers can find their specific machine more easily, leading to more accurate diagnostics and notifications for the technician.
+
+### Email Label Update (Human insight — 2026-09-17)
+
+Updated the email notification system to replace the "Website" label (or add a source identifier) with "Joey's Web Filter". This was implemented by adding a `website` field to the EmailJS payload and adding "Source: Joey's Web Filter" to the formatted email body.
+
+---
+
+## Session 6 — 2026-09-17 (Continued)
+
+### Service Discretion Policy (Human insight)
+
+User requested a clear disclaimer on the "What We Fix" page stating that the shop maintains full discretion over the work it accepts.
+
+**Requirement:** Add a statement to the "What We Fix" page (and potentially the home page) making it clear that the shop reserves the right to refuse certain work.
+
+---
+
+## Session 7 — 2026-09-17 (Continued)
+
+### Customer Maintenance Tracking System (Human insight)
+
+User proposed a comprehensive maintenance scheduling system.
+
+**Vision:** Create individual maintenance schedules for customers based on their specific machine, its current condition, and the manufacturer's manual recommendations. The system should automatically send email reminders to customers when maintenance is due.
+
+**Technical Infrastructure (Human insight):** The system will be hosted on a local server using a Raspberry Pi 5 with 4 TB of storage.
+
+**Implementation (Completed 2026-09-18):**
+1. **Local Server**: Implemented a Node.js/Express server in `/home/yessenia/maintenance-server`.
+2. **Database**: Deployed an SQLite database (`maintenance.db`) tracking customers, machines, and a factory-recommended maintenance library.
+3. **Automation**: Created a `reminder-engine.js` script using `nodemailer` and `cron` for daily automated email reminders.
+4. **Integration**: Modified `js/notify.js` to bridge the website frontend to the local API, ensuring all lead data is captured for long-term tracking.
+5. **Documentation**: Created `README.md` with full setup and configuration instructions for the Raspberry Pi.
+
+

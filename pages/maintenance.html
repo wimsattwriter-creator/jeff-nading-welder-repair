@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seasonal maintenance guides and checklists for engine-driven welders. Keep your machine running at peak performance year-round.">
+    <title>Maintenance Guide — Welder Repair Services</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body style="position: relative;">
+    <div style="position: fixed; top: 0; right: 0; background: red; color: white; padding: 5px 10px; font-family: sans-serif; font-weight: bold; z-index: 9999; font-size: 12px; border-bottom-left-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+        VERSION: v3.0.0
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="../index.html" class="nav__logo">
+                <div class="nav__logo-icon">J&L</div>
+                Welder Repair <span style="display:none;">Welder Repair</span>
+            </a>
+            <ul class="nav__links" id="navLinks">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="what-we-fix.html">What We Fix</a></li>
+                <li><a href="assessment.html">Repair Assessment</a></li>
+                <li><a href="maintenance.html" class="active">Maintenance</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Before &amp; After</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav__right" style="display:flex;align-items:center;gap:1rem;">
+                <div class="cart-icon" id="cartIconNav" onclick="toggleCart()">&#128722;<span class="cart-icon__count" id="cartCount" style="display:none;">0</span></div>
+                <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section section--blue" style="padding:3rem 0;">
+        <div class="container">
+            <div class="section-header section-header--light">
+                <h1>Seasonal Maintenance Guide</h1>
+                <p>Keep your engine-driven welder running at peak performance with our seasonal checklists. Preventative care today saves expensive repairs tomorrow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid--2">
+                <!-- Spring -->
+                <div class="card">
+                    <div class="card__body">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin:0;">🌷 Spring Wake-Up</h3>
+                            <span class="tier-badge tier-badge--1">Routine</span>
+                        </div>
+                        <img src="../images/maintenance/kohler-pro-oil-filter.jpeg" alt="Oil filter replacement" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <p class="card__text">Get your machine ready for the busy season.</p>
+                        <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.5rem; padding-left:1.2rem;">
+                            <li>Change engine oil and filter</li>
+                            <li>Inspect air filter for winter nesting/dirt</li>
+                            <li>Test battery voltage and charge</li>
+                            <li>Check fuel stability and clear lines</li>
+                            <li>Inspect all belts and hoses for cracks</li>
+                            <li>Clean cooling fins and airflow paths</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Summer -->
+                <div class="card">
+                    <div class="card__body">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin:0;">☀️ Summer Heat</h3>
+                            <span class="tier-badge tier-badge--1">Routine</span>
+                        </div>
+                        <img src="../images/maintenance/disassembled-fans-parts.jpeg" alt="Cooling fan parts" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <p class="card__text">Prevent overheating during peak summer loads.</p>
+                        <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.5rem; padding-left:1.2rem;">
+                            <li>Weekly air filter checks (dusty sites)</li>
+                            <li>Monitor oil levels more frequently</li>
+                            <li>Inspect fuel lines for heat-related degradation</li>
+                            <li>Clean generator housing and intake screens</li>
+                            <li>Check for coolant leaks (on liquid-cooled units)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fall -->
+                <div class="card">
+                    <div class="card__body">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin:0;">🍂 Fall Wind-Down</h3>
+                            <span class="tier-badge tier-badge--1">Routine</span>
+                        </div>
+                        <img src="../images/maintenance/kohler-pro-oil-filter.jpeg" alt="Oil filter" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <p class="card__text">Protect your machine before the first freeze.</p>
+                        <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.5rem; padding-left:1.2rem;">
+                            <li>Post-season oil and filter change</li>
+                            <li>Add fuel stabilizer to the tank</li>
+                            <li>Replace spark plugs for next season</li>
+                            <li>Inspect fuel tank for leaks or corrosion</li>
+                            <li>Grease all applicable chassis points</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Winter -->
+                <div class="card">
+                    <div class="card__body">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h3 style="margin:0;">❄️ Winter Storage</h3>
+                            <span class="tier-badge tier-badge--1">Routine</span>
+                        </div>
+                        <img src="../images/maintenance/disassembled-fans-parts.jpeg" alt="Storage parts" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:1rem;">
+                        <p class="card__text">Ensure a smooth start come springtime.</p>
+                        <ul style="text-align:left; font-size:0.9rem; margin-bottom:1.5rem; padding-left:1.2rem;">
+                            <li>Store in a dry, sheltered, covered area</li>
+                            <li>Disconnect battery or use a trickle charger</li>
+                            <li>Apply protective coating to exposed metal parts</li>
+                            <li>Log all maintenance performed this year</li>
+                            <li>Store in a temperature-controlled area if possible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4" style="margin-top:3rem;">
+                <h3 style="margin-bottom:1rem;">Need Parts or Professional Help?</h3>
+                <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                    <a href="shop.html" class="btn btn--primary">Shop Maintenance Parts</a>
+                    <a href="contact.html" class="btn btn--outline-blue">Schedule Professional Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__col"><h4>Welder Repair Services</h4><p style="font-size:0.9rem;color:#999;">Expert engine-driven welder/generator repair and parts.</p></div>
+                <div class="footer__col"><h4>Quick Links</h4><ul><li><a href="what-we-fix.html">What We Fix</a></li><li><a href="assessment.html">Repair Assessment</a></li><li><a href="maintenance.html" class="active">Maintenance</a></li><li><a href="shop.html">Shop</a></li><li><a href="gallery.html">Before &amp; After</a></li></ul></div>
+                <div class="footer__col"><h4>Information</h4><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+            </div>
+            <div class="footer__bottom">&copy; 2026 Welder Repair Services. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div class="dont-panic"><button class="dont-panic__btn" onclick="togglePanicPanel()"><span class="icon">&#128172;</span> Don't Panic</button></div>
+    <div class="dont-panic__panel" id="panicPanel">
+        <div class="dont-panic__panel-header"><h3>We've Seen It All — We Can Help</h3><button class="dont-panic__close" onclick="togglePanicPanel()">&times;</button></div>
+        <div class="dont-panic__panel-body">
+            <p>Take a breath. Whatever's wrong with your welder, there's a good chance we've fixed it before.</p>
+            <div class="dont-panic__assessment-note">
+                <strong>Quick Tip:</strong> Regular maintenance is the best way to avoid major breakdowns. Check out our <a href="maintenance.html">Seasonal Guide</a>.
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar__header"><h3>Your Cart</h3><button class="cart-sidebar__close" onclick="toggleCart()">&times;</button></div>
+        <div class="cart-sidebar__items" id="cartItems"></div>
+        <div class="cart-sidebar__footer" id="cartFooter" style="display:none;"><div class="cart-sidebar__total"><span>Total:</span><span id="cartTotal">$0.00</span></div><button class="btn btn--primary cart-sidebar__checkout" onclick="checkout()">Proceed to Checkout</button></div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+</body>
+</html>

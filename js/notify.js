@@ -29,6 +29,9 @@ const EMAILJS_TEMPLATE_ID = 'template_4f2ydsh';
 const JEFF_EMAIL = 'jlnading@gmail.com';
 const USER_EMAIL = 'wimsattwelder@gmail.com'; // ADD YOUR EMAIL HERE
 
+// Local Server Config (Raspberry Pi)
+const MAINTENANCE_SERVER_URL = 'http://localhost:3000';
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 
@@ -103,6 +106,14 @@ function sendEmailTous(customerData, recipientEmail) {
 function sendTextTous(customerData) {
     // Save locally regardless — backup copy always exists
     saveInquiryLocally(customerData);
+
+    // --- NEW: Save to Local Raspberry Pi Server for Maintenance Tracking ---
+    fetch(MAINTENANCE_SERVER_URL + '/api/save-customer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(customerData)
+    }).catch(err => console.error('Local Maintenance API save failed:', err));
+    // -----------------------------------------------------------------------
 
     const emails = [JEFF_EMAIL];
     if (USER_EMAIL) emails.push(USER_EMAIL);
