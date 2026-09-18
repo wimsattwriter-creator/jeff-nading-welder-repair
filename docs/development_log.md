@@ -338,3 +338,7 @@ User proposed a comprehensive maintenance scheduling system.
 5. **Documentation**: Created `README.md` with full setup and configuration instructions for the Raspberry Pi.
 
 
+
+## 2026-09-18: Logo UI Fix
+- **User Insight:** The header on the repair assessment page (and likely other pages) shows "double horizontal lines" due to duplicate "Welder Repair" text in the logo, breaking visibility consistency.
+- **Decision:** Remove the blue "Welder Repair" (the `<span>` element) from the navigation logo across all pages to ensure a clean, single-line header.
